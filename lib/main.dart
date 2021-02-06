@@ -26,7 +26,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   List<String> _tabs = ["Home", "Category", "Report"];
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     _lsCateogies.add(cat4);
   }
 
-
+  //HELLLLLOOOOOOOOO
 
   Widget _getCategoryTab() {
     return ListView.builder(
@@ -94,10 +95,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               IconData(category.iconCodePoint, fontFamily: 'MaterialIcons'),
               color: Theme.of(context).accentColor,
             ),
-            title: Text(category.title, style: Theme.of(context).textTheme.body2.copyWith(
-                color: Theme.of(context).accentColor
-            ),),
-            subtitle: Text(category.desc, ),
+            title: Text(
+              category.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .body2
+                  .copyWith(color: Theme.of(context).accentColor),
+            ),
+            subtitle: Text(
+              category.desc,
+            ),
           ),
         );
       },
@@ -123,15 +130,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           children: <Widget>[
             Center(
                 child: Text(
-                  "Home",
-                  style: Theme.of(context).textTheme.display1,
-                )),
+              "Home",
+              style: Theme.of(context).textTheme.display1,
+            )),
             _getCategoryTab(),
-            Center(child: Text("Reports", style: Theme.of(context).textTheme.display1,))
+            Center(
+                child: Text(
+              "Reports",
+              style: Theme.of(context).textTheme.display1,
+            ))
           ],
-        )
-    );
+        ));
   }
 }
-
-
