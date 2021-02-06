@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'models/category_model.dart';
 import 'models/expense_model.dart';
 import 'models/serializers.dart';
+import 'db/migrations/db_script.dart';
+import 'db/migrations/offline_db_provider.dart';
+import 'db/migrations/init_db.dart';
 
 void main() {
+  OfflineDbProvider.provider.initDB();
   runApp(MyApp());
 }
 
