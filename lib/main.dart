@@ -18,4 +18,8 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
     );
   }
+
 }
+
+//Put bottom navigation bar here
+

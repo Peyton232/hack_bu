@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 //UI Colors
 const kTealColor = Color(0xff63b7b7);
-const kGrayColor = Color(0xffdfdfdf);
+const kGrayColor = Color(0xffefefef);
 //Other colors: Black, White
 
 //Amount/Monetary Colors
@@ -22,3 +22,29 @@ const kBluePastelColor = Color(0xff82b9cf);
 const kYellowPastelColor = Color(0xfffdfd97);
 const kPurplePastelColor = Color(0xffcc99c9);
 const kOrangePastelColor = Color(0xfffeb144);
+
+//For HomePage
+const kAppBarTitleTextStyle = TextStyle(
+  fontSize: 25,
+  color: Colors.white,
+);
+
+const kHomeMoneyTextStyle = TextStyle(
+  fontSize: 45.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kHomeLabelTextStyle =
+    TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400);
+
+const kHomeMoneySpentTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+  color: kRedColor,
+);
+
+const kHomeMoneyGainedTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+  color: kGreenColor,
+);
