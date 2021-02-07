@@ -18,7 +18,7 @@ const kRedColor = Color(0xfff4141e);
 const kGreenColor = Color(0xff00c000);
 
 //Category Colors
-const kRedPastelColor = Color(0xffff6663);
+const kRedPastelColor = Color(0xffd14b5c);
 const kGreenPastelColor = Color(0xff9ee09e);
 const kBluePastelColor = Color(0xff82b9cf);
 const kYellowPastelColor = Color(0xfffdfd97);
@@ -35,7 +35,7 @@ const kCardShadow = [
 ];
 
 const kAppBarTitleTextStyle = TextStyle(
-  fontSize: 25,
+  fontSize: 23,
   color: Colors.white,
 );
 

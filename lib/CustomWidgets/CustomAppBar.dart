@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
 
 class CustomAppBar extends StatefulWidget {
+  final String appBarLabel;
+  final Function plusFunction;
+
+  CustomAppBar({@required this.appBarLabel, @required this.plusFunction});
+
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
 }
@@ -34,14 +39,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
               flex: 4,
               child: Center(
                 child: Text(
-                  'Home',
+                  widget.appBarLabel,
                   style: kAppBarTitleTextStyle,
                 ),
               ),
             ),
             GestureDetector(
               onTap: () {
-                print('Add expense/income');
+                print(
+                    'Add expense/income'); //TODO: Add certain function for each tab
               },
               child: Icon(
                 Icons.add,

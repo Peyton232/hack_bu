@@ -1,6 +1,8 @@
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
+import 'Pages/CategoryPage.dart';
+import 'Pages/SummaryPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,15 +28,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    SummaryPage(),
     HomePage(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    CategoryPage(),
   ];
 
   void _onItemTapped(int index) {

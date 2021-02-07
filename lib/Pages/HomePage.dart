@@ -12,7 +12,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            CustomAppBar(),
+            CustomAppBar(
+              appBarLabel: 'Home',
+            ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 10.0,
