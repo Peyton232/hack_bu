@@ -1,3 +1,7 @@
+
+import 'package:expense_manager/CustomWidgets/ActivityCard.dart';
+import 'package:expense_manager/Data/List.dart';
+import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expense_manager/CustomWidgets/CustomAppBar.dart';
@@ -11,66 +15,48 @@ import 'package:expense_manager/Data/constants.dart';
 //import 'package:expense_manager/routes/add_expense.dart';
 import 'package:flutter/cupertino.dart';
 import '../routes/add_expense.dart';
-
-  class HomePage extends StatelessWidget {
-
-    String getStringDate(DateTime dt) {
+class HomePage extends StatelessWidget {
+  
+  String getStringDate(DateTime dt) {
       return "${dt.year}/${dt.month}/${dt.day}";
     }
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-          body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  CustomAppBar(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 5.0,
-                    ),
-                    child: Container(
-                      height: 100.0,
-                      //color: kGrayColor, //debugging purposes
-                      child: Center(
-                        child: Text(
-                          '\$4,567.89',
-                          style: kHomeMoneyTextStyle,
-                        ),
-                      ),
-                    ),
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            CustomAppBar(
+              appBarLabel: 'Home',
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 5.0,
+              ),
+              child: Container(
+                height: 100.0,
+                //color: kGrayColor, //debugging purposes
+                child: Center(
+                  child: Text(
+                    '\$4,567.89',
+                    style: kHomeMoneyTextStyle,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                    ),
-                    child: HomeMoneyCard(
-                      cardName: 'Money Spent:',
-                      amount: 123.45,
-                      style: kHomeMoneySpentTextStyle,
-                      addSubtract: '-',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                    ),
-                    child: HomeMoneyCard(
-                      cardName: 'Money Gained: ',
-                      amount: 256.64,
-                      style: kHomeMoneyGainedTextStyle,
-                      addSubtract: '+',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
+                ),
+              ),
+            ),
+            HomeMoneyCard(
+              cardName: 'Money Spent:',
+              amount: 123.45,
+              style: kHomeMoneySpentTextStyle,
+              addSubtract: '-',
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       IconButton(
@@ -84,6 +70,66 @@ import '../routes/add_expense.dart';
                           style: Theme.of(context).textTheme.title,
                         ),
                   ),
+            HomeMoneyCard(
+              cardName: 'Money Gained: ',
+              amount: 256.64,
+              style: kHomeMoneyGainedTextStyle,
+              addSubtract: '+',
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 15.0),
+              child: Text(
+                'Recent Activity:',
+                style: kHomeLabelTextStyle,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 15.0,
+                vertical: 5.0,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: kCardShadow,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    ActivityCard(
+                      name: 'Salary',
+                      addSubtract: '+',
+                      color: kGreenColor,
+                      amount: 256.56,
+                      date: 'January 31, 2021',
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                      height: 3.0,
+                      thickness: 0.5,
+                    ),
+                    ActivityCard(
+                      name: 'Phone Case',
+                      addSubtract: '-',
+                      color: kRedColor,
+                      amount: 21.64,
+                      date: 'January 25, 2021',
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                      height: 3.0,
+                      thickness: 0.5,
+                    ),
+                    ActivityCard(
+                      name: 'Snack',
+                      addSubtract: '-',
+                      color: kRedColor,
+                      amount: 5.21,
+                      date: 'January 21, 2021',
+                    ),
                   ],
                   ),
                   Padding(
@@ -233,5 +279,3 @@ class Activity extends StatelessWidget {
     );
   }
 }
-
-

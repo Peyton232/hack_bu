@@ -4,6 +4,11 @@ import '../Pages/categoryPage.dart';
 import '../Pages/settingsPage.dart';
 
 class CustomAppBar extends StatefulWidget {
+  final String appBarLabel;
+  final Function plusFunction;
+
+  CustomAppBar({@required this.appBarLabel, @required this.plusFunction});
+
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
 }
@@ -14,7 +19,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 120.0,
-      color: kTealColor, //debugging purposes
+      color: kDarkTealColor, //debugging purposes
       child: Padding(
         padding: EdgeInsets.only(
           left: 20.0,
@@ -45,7 +50,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               flex: 4,
               child: Center(
                 child: Text(
-                  'Home',
+                  widget.appBarLabel,
                   style: kAppBarTitleTextStyle,
                 ),
               ),
@@ -60,7 +65,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     }
                   )
                 );
-
               },
               child: Icon(
                 Icons.add,
