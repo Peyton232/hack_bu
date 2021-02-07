@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
 import '../Pages/categoryPage.dart';
 import '../Pages/settingsPage.dart';
+import '../routes/add_expense.dart';
 
 class CustomAppBar extends StatefulWidget {
   final String appBarLabel;
@@ -59,11 +60,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               onTap: () {
                 Navigator.push(
                     context,
-                  MaterialPageRoute(
-                    builder: (context){
-                      return  CategoryPage();
-                    }
-                  )
+                    MaterialPageRoute(builder: (context) => AddExpense())
                 );
               },
               child: Icon(

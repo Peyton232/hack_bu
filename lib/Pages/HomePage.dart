@@ -16,11 +16,6 @@ import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/cupertino.dart';
 import '../routes/add_expense.dart';
 class HomePage extends StatelessWidget {
-  
-  String getStringDate(DateTime dt) {
-      return "${dt.year}/${dt.month}/${dt.day}";
-    }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,20 +51,6 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.arrow_back),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Text(
-                          getStringDate(DateTime.now()),
-                          style: Theme.of(context).textTheme.title,
-                        ),
-                  ),
             HomeMoneyCard(
               cardName: 'Money Gained: ',
               amount: 256.64,
@@ -131,57 +112,15 @@ class HomePage extends StatelessWidget {
                       date: 'January 21, 2021',
                     ),
                   ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Text(
-                      'Recent Activity:',
-                      style: kHomeLabelTextStyle,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                      vertical: 5.0,
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: kGrayColor,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Activity(
-                            name: 'Salary',
-                            addSubtract: '+',
-                            color: kGreenColor,
-                            amount: 256.56,
-                          ),
-                          Text("Activity stuff"),
-                          Text("Activity stuff"),
-                          Text("Activity stuff"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-
+                ),
               ),
-
-          ),
-        floatingActionButton: FloatingActionButton(
-            onPressed: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddExpense())
-              );
-
-            },
-            child: Icon(Icons.add)
+            ),
+          ],
         ),
-      );
-    }
+      ),
+    );
   }
+}
 
 Widget _getExpenses() {
   var expense1 = ExpenseModel().rebuild((b) => b
