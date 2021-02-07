@@ -1,4 +1,5 @@
 import 'package:expense_manager/CustomWidgets/ActivityCard.dart';
+import 'package:expense_manager/CustomWidgets/RecentActivity.dart';
 import 'package:expense_manager/Data/List.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
@@ -18,20 +19,14 @@ import '../Classes/CashFlow.dart';
 
 import '../globals.dart' as globals;
 
-
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // CustomAppBar(
-            //   appBarLabel: 'Home',
-            // ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 10.0,
@@ -51,7 +46,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Spent:',
-              amount: 123.45,
+              amount: globals.totalCash.expense.toString(),
               style: kHomeMoneySpentTextStyle,
               addSubtract: '-',
             ),
@@ -60,7 +55,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Gained: ',
-              amount: 256.64,
+              amount: globals.totalCash.income.toString(),
               style: kHomeMoneyGainedTextStyle,
               addSubtract: '+',
             ),
@@ -71,7 +66,7 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.only(left: 15.0),
               child: Text(
                 'Recent Activity:',
-                style: kHomeLabelTextStyle,
+                style: kActivityLabelTextStyle,
               ),
             ),
             Padding(
@@ -79,48 +74,7 @@ class HomePage extends StatelessWidget {
                 horizontal: 15.0,
                 vertical: 5.0,
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: kCardShadow,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    ActivityCard(
-                      name: 'Salary',
-                      addSubtract: '+',
-                      color: kGreenColor,
-                      amount: 256.56,
-                      date: 'January 31, 2021',
-                    ),
-                    Divider(
-                      color: Colors.black54,
-                      height: 3.0,
-                      thickness: 0.5,
-                    ),
-                    ActivityCard(
-                      name: 'Phone Case',
-                      addSubtract: '-',
-                      color: kRedColor,
-                      amount: 21.64,
-                      date: 'January 25, 2021',
-                    ),
-                    Divider(
-                      color: Colors.black54,
-                      height: 3.0,
-                      thickness: 0.5,
-                    ),
-                    ActivityCard(
-                      name: 'Snack',
-                      addSubtract: '-',
-                      color: kRedColor,
-                      amount: 5.21,
-                      date: 'January 21, 2021',
-                    ),
-                  ],
-                ),
-              ),
+              child: RecentActivity(),
             ),
           ],
         ),
@@ -183,42 +137,42 @@ Widget _getExpenses() {
   );
 }
 
-class Activity extends StatelessWidget {
-  final String name;
-  final double amount;
-  final Color color;
-  final String addSubtract;
-
-  Activity({
-    @required this.amount,
-    @required this.color,
-    @required this.name,
-    @required this.addSubtract,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Text(
-              '$addSubtract \$$amount',
-              style: TextStyle(
-                color: color,
-                fontSize: 20.0,
-              ),
-            ),
-          ),
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 20.0,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
+// class Activity extends StatelessWidget {
+//   final String name;
+//   final double amount;
+//   final Color color;
+//   final String addSubtract;
+//
+//   Activity({
+//     @required this.amount,
+//     @required this.color,
+//     @required this.name,
+//     @required this.addSubtract,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+//       child: Row(
+//         children: <Widget>[
+//           Expanded(
+//             child: Text(
+//               '$addSubtract \$$amount',
+//               style: TextStyle(
+//                 color: color,
+//                 fontSize: 20.0,
+//               ),
+//             ),
+//           ),
+//           Text(
+//             name,
+//             style: TextStyle(
+//               fontSize: 20.0,
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

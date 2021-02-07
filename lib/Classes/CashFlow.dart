@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 
 class CashFlow {
@@ -22,15 +23,21 @@ class CashFlow {
     @required this.name,
     @required this.addSubtract,
     @required this.color,
+    @required this.income,
+    @required this.expense,
   });
 
   void addAmount(double num){
     amount += num;
+    int fac = pow(10, 2);
+    amount = (amount * fac).round() / fac;
     color = Colors.green;
   }
 
   void subAmount(double num){
     amount -= num;
+    int fac = pow(10, 2);
+    amount = (amount * fac).round() / fac;
     color = Colors.red;
   }
 }
