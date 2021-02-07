@@ -35,26 +35,34 @@ const kCardShadow = [
 ];
 
 const kAppBarTitleTextStyle = TextStyle(
-  fontSize: 23,
+  fontSize: 20,
   color: Colors.white,
 );
 
 const kHomeMoneyTextStyle = TextStyle(
   fontSize: 45.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
 );
 
-const kHomeLabelTextStyle =
-    TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400);
+const kHomeLabelTextStyle = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.w400,
+  color: Colors.white,
+);
+
+const kActivityLabelTextStyle = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.w400,
+);
 
 const kHomeMoneySpentTextStyle = TextStyle(
   fontSize: 30.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
   color: kRedColor,
 );
 
 const kHomeMoneyGainedTextStyle = TextStyle(
   fontSize: 30.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
   color: kGreenColor,
 );
