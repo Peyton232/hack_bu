@@ -1,3 +1,5 @@
+import 'package:expense_manager/Insults/Insults.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
 
 }
 
+
 class BottomNavBar extends StatefulWidget {
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -45,6 +48,29 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
+  Widget _insultAlert(){
+    return CupertinoAlertDialog(
+      title: Text("Spent to Much"),
+      content: Text(insultobj.getInsult),
+      actions: [
+        CupertinoDialogAction(
+          child: Text("Close"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: Text("I Agree"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    );
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +88,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.house),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
             label: 'Categories',
