@@ -1,3 +1,5 @@
+import 'package:expense_manager/insults/Insults.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
@@ -7,6 +9,8 @@ import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
 import 'db/migrations/init_db.dart';
 import 'CustomWidgets/CustomAppBar.dart';
+import 'Classes/CashFlow.dart';
+
 
 void main() {
   OfflineDbProvider.provider.initDB();
@@ -22,7 +26,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class BottomNavBar extends StatefulWidget {
+
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
@@ -51,6 +57,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
       _selectedIndex = index;
     });
   }
+
+  Widget _insultAlert(){
+    var insultobj = new Insults();
+    return CupertinoAlertDialog(
+      title: Text("Spent to Much"),
+      content: Text(insultobj.getInsult),
+      actions: [
+        CupertinoDialogAction(
+          child: Text("Close"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: Text("I Agree"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    );
+
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -30,9 +30,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //return  settingsPage();
-                }));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context){
+                          return  SettingsScreen();
+                        }
+                    )
+                );
               },
               child: Icon(
                 Icons.dehaze,
