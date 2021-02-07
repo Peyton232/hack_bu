@@ -40,7 +40,8 @@ class _AddExpenseState extends State<AddExpense> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add New Expense"),
+
+        title: Text("Add New Expense/Gain"),
         backgroundColor: kDarkTealColor,
       ),
       body: Container(
@@ -49,17 +50,23 @@ class _AddExpenseState extends State<AddExpense> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              child: new ButtonBar(
-            alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-                child: Text("Expense"),
-                onPressed: (){},
-            ),
-            FlatButton(onPressed: (){}, child: Text("Gain"))
-
-          ],
-        )
+                child: new ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text("Expense"),
+                      onPressed: (){
+                        expense = true;
+                      },
+                      highlightColor: Colors.blueGrey,
+                    ),
+                    FlatButton(onPressed: (){
+                      expense = false;
+                    }, child: Text("Gain"),
+                    highlightColor: Colors.blueGrey,
+                    )
+                  ],
+                )
             ),
             Container(
               child: StreamBuilder(
@@ -73,7 +80,8 @@ class _AddExpenseState extends State<AddExpense> {
                   return Wrap(
                     children: List.generate(
                       snap.data.length,
-                      (int index) {
+
+                          (int index) {
                         var expenseModel = snap.data[index];
                         return Container(
                           margin: EdgeInsets.symmetric(
@@ -85,7 +93,7 @@ class _AddExpenseState extends State<AddExpense> {
                             label: Text(expenseModel.title),
                             onSelected: (selected) {
                               setState(
-                                () {
+                                    () {
                                   selectedExpenseId = expenseModel.id;
                                 },
                               );
@@ -117,10 +125,10 @@ class _AddExpenseState extends State<AddExpense> {
                         onSubmitted: (String text) {
                           if (expense) {
                             globals.totalCash.subAmount(double.parse(text));
+                            _showMaterialDialog();
                           } else {
                             globals.totalCash.addAmount(double.parse(text));
                           }
-                          _showMaterialDialog();
                         },
                       ),
                     ),
@@ -220,16 +228,16 @@ class _AddExpenseState extends State<AddExpense> {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
-              title: new Text("Insult"),
-              content: new Text(globals.insultobj.getInsult),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('Close me!'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            ));
+          title: new Text("Insult"),
+          content: new Text(globals.insultobj.getInsult),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Close me!'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        ));
   }
 }
