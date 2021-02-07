@@ -19,9 +19,9 @@ class HomeMoneyCard extends StatelessWidget {
     return Container(
       height: 100.0,
       decoration: BoxDecoration(
-        color: kGrayColor,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15.0),
+          boxShadow: kCardShadow),
       child: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,

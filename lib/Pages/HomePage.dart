@@ -2,6 +2,7 @@ import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_manager/CustomWidgets/CustomAppBar.dart';
 import 'package:expense_manager/CustomWidgets/HomeMoneyCard.dart';
+import '../CustomWidgets/Activity.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -70,8 +71,9 @@ class HomePage extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: kGrayColor,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
+                  boxShadow: kCardShadow,
                 ),
                 child: Column(
                   children: <Widget>[
@@ -81,55 +83,34 @@ class HomePage extends StatelessWidget {
                       color: kGreenColor,
                       amount: 256.56,
                     ),
-                    Text("Activity stuff"),
-                    Text("Activity stuff"),
-                    Text("Activity stuff"),
+                    Divider(
+                      color: Colors.black54,
+                      height: 3.0,
+                      thickness: 0.5,
+                    ),
+                    Activity(
+                      name: 'Phone Case',
+                      addSubtract: '-',
+                      color: kRedColor,
+                      amount: 21.64,
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                      height: 3.0,
+                      thickness: 0.5,
+                    ),
+                    Activity(
+                      name: 'Snack',
+                      addSubtract: '-',
+                      color: kRedColor,
+                      amount: 5.21,
+                    ),
                   ],
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Activity extends StatelessWidget {
-  final String name;
-  final double amount;
-  final Color color;
-  final String addSubtract;
-
-  Activity({
-    @required this.amount,
-    @required this.color,
-    @required this.name,
-    @required this.addSubtract,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Text(
-              '$addSubtract \$$amount',
-              style: TextStyle(
-                color: color,
-                fontSize: 20.0,
-              ),
-            ),
-          ),
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 20.0,
-            ),
-          )
-        ],
       ),
     );
   }

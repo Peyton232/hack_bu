@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 //UI Colors
 const kTealColor = Color(0xff63b7b7);
 const kGrayColor = Color(0xffefefef);
+const kLightTealColor = Color(0xff93dcdc);
+const kDarkTealColor = Color(0xff4c8989);
 //Other colors: Black, White
 
 //Amount/Monetary Colors
@@ -24,6 +26,14 @@ const kPurplePastelColor = Color(0xffcc99c9);
 const kOrangePastelColor = Color(0xfffeb144);
 
 //For HomePage
+const kCardShadow = [
+  BoxShadow(
+    color: Colors.black26,
+    offset: Offset(3.0, 3.0),
+    blurRadius: 3.0,
+  ),
+];
+
 const kAppBarTitleTextStyle = TextStyle(
   fontSize: 25,
   color: Colors.white,

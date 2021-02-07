@@ -11,7 +11,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 120.0,
-      color: kTealColor, //debugging purposes
+      color: kDarkTealColor, //debugging purposes
       child: Padding(
         padding: EdgeInsets.only(
           left: 20.0,
