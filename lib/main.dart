@@ -7,6 +7,7 @@ import 'Pages/CategoryPage.dart';
 import 'Pages/SummaryPage.dart';
 import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
+import 'Classes/CashFlow.dart';
 
 void main() {
 

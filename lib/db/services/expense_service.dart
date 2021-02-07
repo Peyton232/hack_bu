@@ -5,7 +5,7 @@ import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/models/serializers.dart';
 import 'package:flutter/material.dart';
 
-/*
+
 abstract class ExpenseServiceBase {
   Future<BuiltList<CategoryModel>> getAllCategories();
   Future<int> createCategory(CategoryModel category);
@@ -70,4 +70,3 @@ class CategoryService implements ExpenseServiceBase {
     return entity.isNotEmpty;
   }
 }
-*/

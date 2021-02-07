@@ -3,6 +3,8 @@ import 'package:expense_manager/blocks/category_block.dart';
 import 'package:expense_manager/db/services/category_service.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:flutter/material.dart';
+import '../insults/Insults.dart';
+import '../globals.dart' as globals;
 
 class AddExpense extends StatefulWidget {
   @override
@@ -32,6 +34,9 @@ class _AddExpenseState extends State<AddExpense> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Add New Expense"),
@@ -107,6 +112,7 @@ class _AddExpenseState extends State<AddExpense> {
   }
 
   Widget _shortcutKeyboard() {
+
     var keyboardKeys = [
       "50",
       "100",
@@ -123,6 +129,7 @@ class _AddExpenseState extends State<AddExpense> {
           itemCount: keyboardKeys.length,
           itemBuilder: (_, index) {
             var key = keyboardKeys[index];
+            Insults meanWords = new Insults();
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 6.0),
               decoration: BoxDecoration(
@@ -137,11 +144,15 @@ class _AddExpenseState extends State<AddExpense> {
                           selection: TextSelection.collapsed(offset: key.length),
                         );
                   });
+                  globals.totalCash.subAmount(double.parse(key));
                 },
                 child: Text(key),
+                //child: globals.totalCash.addAmount(double.parse(key));
               ),
+
             );
           },
         ));
   }
 }
+
