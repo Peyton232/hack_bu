@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
 import 'Pages/CategoryPage.dart';
 import 'Pages/SummaryPage.dart';
+import 'db/migrations/db_script.dart';
+import 'db/offline_db_provider.dart';
+import 'db/migrations/init_db.dart';
 
 void main() {
+
+  OfflineDbProvider.provider.initDB();
   runApp(MyApp());
 }
 
@@ -15,6 +20,7 @@ class MyApp extends StatelessWidget {
       home: BottomNavBar(),
     );
   }
+
 }
 
 class BottomNavBar extends StatefulWidget {

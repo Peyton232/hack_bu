@@ -5,13 +5,14 @@ import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/models/serializers.dart';
 import 'package:flutter/material.dart';
 
-abstract class CategoryServiceBase {
+/*
+abstract class ExpenseServiceBase {
   Future<BuiltList<CategoryModel>> getAllCategories();
   Future<int> createCategory(CategoryModel category);
   Future<int> deleteCategory(int categoryId);
 }
 
-class CategoryService implements CategoryServiceBase {
+class CategoryService implements ExpenseServiceBase {
 
   @override
   Future<int> deleteCategory(int categoryId) async {
@@ -69,3 +70,4 @@ class CategoryService implements CategoryServiceBase {
     return entity.isNotEmpty;
   }
 }
+*/

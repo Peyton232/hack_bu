@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
+import '../Pages/categoryPage.dart';
+import '../Pages/settingsPage.dart';
+import '../routes/add_expense.dart';
 
 class CustomAppBar extends StatefulWidget {
   final String appBarLabel;
@@ -12,6 +15,7 @@ class CustomAppBar extends StatefulWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +31,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                print('Settings');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context){
+                          //return  settingsPage();
+                        }
+                    )
+                );
+
               },
               child: Icon(
                 Icons.dehaze,
@@ -46,8 +58,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             GestureDetector(
               onTap: () {
-                print(
-                    'Add expense/income'); //TODO: Add certain function for each tab
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddExpense())
+                );
               },
               child: Icon(
                 Icons.add,
