@@ -18,7 +18,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120.0,
+      height: 103.0,
       color: kDarkTealColor, //debugging purposes
       child: Padding(
         padding: EdgeInsets.only(
@@ -30,19 +30,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context){
-                          return  SettingsScreen();
-                        }
-                    )
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return SettingsScreen();
+                }));
               },
               child: Icon(
                 Icons.dehaze,
                 color: Colors.white,
-                size: 25.0,
+                size: 20.0,
               ),
             ),
             Expanded(
@@ -62,7 +57,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               child: Icon(
                 Icons.add,
                 color: Colors.white,
-                size: 25.0,
+                size: 20.0,
               ),
             ),
           ],

@@ -30,7 +30,6 @@ class _CategoryPageState extends State<CategoryPage> {
     return _getCategoryTab();
   }
 
-
   Widget _getCategoryTab() {
     return new Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -70,7 +69,6 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
             */
           ),
-
           StreamBuilder(
             stream: _categoryBlock.categoryListStream,
             builder:
@@ -86,18 +84,17 @@ class _CategoryPageState extends State<CategoryPage> {
                     var category = lsCategories[index];
                     return Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.0),
-                          border: new Border.all(
-                              width: 1.0,
-                              style: BorderStyle.solid,
-                              color: Colors.white)),
+                        color: kYellowPastelColor,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
                       margin: EdgeInsets.all(12.0),
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          print('Overview of that category');
+                        },
                         leading: Icon(
                           IconData(category.iconCodePoint,
                               fontFamily: 'MaterialIcons'),
-                          color: Theme.of(context).accentColor,
                         ),
                         trailing: IconButton(
                           icon: Icon(Icons.delete),
@@ -106,10 +103,6 @@ class _CategoryPageState extends State<CategoryPage> {
                         ),
                         title: Text(
                           category.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .body2
-                              .copyWith(color: Theme.of(context).accentColor),
                         ),
                         subtitle: category.desc == null ? SizedBox() : Text(
                           category.desc,
