@@ -35,7 +35,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     context,
                     MaterialPageRoute(
                         builder: (context){
-                          //return  settingsPage();
+                          return  SettingsScreen();
                         }
                     )
                 );
