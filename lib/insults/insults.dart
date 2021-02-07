@@ -1,11 +1,13 @@
-import 'dart:async';
+import 'dart:math';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:expense_manager/db/services/category_service.dart';
-import 'package:expense_manager/models/category_model.dart';
-import 'package:rxdart/rxdart.dart';
+class Insults{
+  List<String> insultString = [
+    "You did not have to buy that you dunce!", "Your an idiot sandwich!"
+  ];
 
-class InsultBlock {
-  var badInsults = [];
+  String get getInsult{
+    var rng = new Random();
+    return insultString[rng.nextInt(insultString.length)];
+  }
 
 }

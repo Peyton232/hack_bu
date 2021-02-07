@@ -7,7 +7,6 @@ import 'Pages/CategoryPage.dart';
 import 'Pages/SummaryPage.dart';
 import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
-import 'db/migrations/init_db.dart';
 
 void main() {
 
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
 
 
 class BottomNavBar extends StatefulWidget {
+
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
@@ -49,6 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 
   Widget _insultAlert(){
+    var insultobj = new Insults();
     return CupertinoAlertDialog(
       title: Text("Spent to Much"),
       content: Text(insultobj.getInsult),
