@@ -56,7 +56,7 @@ class _AddCategoryState extends State<AddCategory> {
                     height: 20.0,
                   ),
                   Text(
-                    'Category Description:',
+                    'Necessary Purchase:',
                     style: kActivityLabelTextStyle,
                   ),
                   Container(
@@ -72,6 +72,7 @@ class _AddCategoryState extends State<AddCategory> {
                         ),
                         FlatButton(onPressed: (){
                         }, child: Text("No"),
+                          color:  Colors.teal,
                           highlightColor: Colors.blueGrey,
                         )
                       ],

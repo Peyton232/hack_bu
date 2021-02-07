@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     //'\$4,567.89',
-                    "\$" + globals.totalCash.amount.toString(),
+                    "\$" + globals.totalCash.amount.toStringAsFixed(2),
                     style: kHomeMoneyTextStyle,
                   ),
                 ),
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Spent:',
-              amount: globals.totalCash.expense.toString(),
+              amount: globals.totalCash.expense.toStringAsFixed(2),
               style: kHomeMoneySpentTextStyle,
               addSubtract: '-',
             ),
@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Gained: ',
-              amount: globals.totalCash.income.toString(),
+              amount: globals.totalCash.income.toStringAsFixed(2),
               style: kHomeMoneyGainedTextStyle,
               addSubtract: '+',
             ),

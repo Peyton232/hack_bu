@@ -9,10 +9,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/blocks/category_block.dart';
 import 'package:expense_manager/db/services/category_service.dart';
+import '../CustomWidgets/ExpGainTab.dart';
 
 import '../insults/Insults.dart';
 
 import '../globals.dart' as globals;
+
+enum MoneyFlow {
+  expense,
+  gain,
+}
 
 class AddExpense extends StatefulWidget {
   @override
@@ -24,7 +30,8 @@ class _AddExpenseState extends State<AddExpense> {
   FocusNode _focus = new FocusNode();
   bool _showKeyboard = false;
   TextEditingController _amountTextController = TextEditingController();
-  bool expense = true;
+ // bool expense = true;
+  MoneyFlow selectedMoneyFlow = MoneyFlow.expense;
 
   @override
   void initState() {
@@ -45,8 +52,7 @@ class _AddExpenseState extends State<AddExpense> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        title: Text("Add New Expense/Gain"),
+        title: Text("Add Cashflow"),
         backgroundColor: kDarkTealColor,
       ),
       body: Container(
@@ -55,23 +61,7 @@ class _AddExpenseState extends State<AddExpense> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-                child: new ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    FlatButton(
-                      child: Text("Expense"),
-                      onPressed: (){
-                        expense = true;
-                      },
-                      highlightColor: Colors.blueGrey,
-                    ),
-                    FlatButton(onPressed: (){
-                      expense = false;
-                    }, child: Text("Gain"),
-                    highlightColor: Colors.blueGrey,
-                    )
-                  ],
-                )
+              child: ExpGainTab(),
             ),
             Container(
               child: StreamBuilder(
@@ -99,12 +89,12 @@ class _AddExpenseState extends State<AddExpense> {
                             onSelected: (selected) {
                               setState(() {
                                 //selectedCategoryId = categoryModel.id;
-                                if (categoryModel.title == "gas" || categoryModel.title == "Bills" ||categoryModel.title == "Groceries"){
+                                if (categoryModel.title == "Gas" || categoryModel.title == "Bills" || categoryModel.title == "Work Expenses"){
                                   selectedCategoryId = 1;
                                 } else {
                                   selectedCategoryId = 0;
                                 }
-                                },
+                              },
                               );
                             },
                           ),
@@ -132,7 +122,7 @@ class _AddExpenseState extends State<AddExpense> {
                         maxLines: 1,
                         onChanged: (String text) {},
                         onSubmitted: (String text) {
-                          if (expense) {
+                          if (globals.expense) {
                             globals.totalCash.subAmount(double.parse(text));
 
                             if (selectedCategoryId == 0) {

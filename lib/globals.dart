@@ -22,3 +22,5 @@ Insults insultobj = new Insults();
 
 Activity handler = new Activity();
 int aCounter = 0;
+
+bool expense;
