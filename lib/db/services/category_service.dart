@@ -1,6 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'package:expense_manager/db/migrations/offline_db_provider.dart';
+import '../offline_db_provider.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/models/serializers.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +12,11 @@ abstract class CategoryServiceBase {
 }
 
 class CategoryService implements CategoryServiceBase {
-
   @override
   Future<int> deleteCategory(int categoryId) async {
     var db = await OfflineDbProvider.provider.database;
-    var result = db.delete("Category", where: "id = ?", whereArgs: [categoryId]);
+    var result =
+        db.delete("Category", where: "id = ?", whereArgs: [categoryId]);
     return result;
   }
 
@@ -28,11 +28,12 @@ class CategoryService implements CategoryServiceBase {
 
     var list = BuiltList<CategoryModel>();
     res.forEach((cat) {
-      var category = serializers.deserializeWith<CategoryModel>(CategoryModel.serializer, cat);
+      var category = serializers.deserializeWith<CategoryModel>(
+          CategoryModel.serializer, cat);
       list = list.rebuild((b) => b..add(category));
     });
 
-    return list.rebuild((b) => b..sort((a,b) => a.title.compareTo(b.title)));
+    return list.rebuild((b) => b..sort((a, b) => a.title.compareTo(b.title)));
   }
 
   @override
@@ -40,7 +41,7 @@ class CategoryService implements CategoryServiceBase {
     //check if exists already
     var exists = await categoryExists(category.title);
 
-    if(exists) return 0;
+    if (exists) return 0;
 
     var db = await OfflineDbProvider.provider.database;
     //get the biggest id in the table
@@ -49,7 +50,7 @@ class CategoryService implements CategoryServiceBase {
     //insert to the table using the new id
     var resultId = await db.rawInsert(
         "INSERT Into Category (id, title, desc, iconCodePoint)"
-            " VALUES (?,?,?,?)",
+        " VALUES (?,?,?,?)",
         [id, category.title, category.desc, category.iconCodePoint.toString()]);
     return resultId;
   }
@@ -59,10 +60,7 @@ class CategoryService implements CategoryServiceBase {
     var res = await db.query("Category");
     if (res.isEmpty) return false;
 
-    var entity = res.firstWhere(
-            (b) =>
-        b["title"] == title,
-        orElse: () => null);
+    var entity = res.firstWhere((b) => b["title"] == title, orElse: () => null);
 
     if (entity == null) return false;
 
