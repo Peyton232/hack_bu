@@ -99,7 +99,7 @@ class _AddExpenseState extends State<AddExpense> {
                             onSelected: (selected) {
                               setState(() {
                                 //selectedCategoryId = categoryModel.id;
-                                if (categoryModel.title == "gas" || categoryModel.title == "bills"){
+                                if (categoryModel.title == "gas" || categoryModel.title == "Bills" ||categoryModel.title == "Groceries"){
                                   selectedCategoryId = 1;
                                 } else {
                                   selectedCategoryId = 0;

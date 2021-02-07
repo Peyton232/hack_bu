@@ -14,7 +14,6 @@ class CategoryPage extends StatefulWidget {
   _CategoryPageState createState() => _CategoryPageState();
 }
 
-
 class _CategoryPageState extends State<CategoryPage> {
   CategoryBlock _categoryBlock;
 
@@ -24,7 +23,6 @@ class _CategoryPageState extends State<CategoryPage> {
     _categoryBlock = CategoryBlock(CategoryService());
   }
 
-
   @override
   Widget build(BuildContext context) {
     return _getCategoryTab();
@@ -33,27 +31,28 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget _getCategoryTab() {
     return new Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: (){
+          backgroundColor: Colors.teal[700],
+          onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AddCategory(categoryBloc: _categoryBlock,)
+              MaterialPageRoute(
+                builder: (context) => AddCategory(
+                  categoryBloc: _categoryBlock,
+                ),
               ),
             );
           },
-          child: Icon(Icons.add)
-      ),
+          child: Icon(Icons.add)),
       body: new Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 20.0,
               ),
               child: Row(
-                children: <Widget>[
-                ],
+                children: <Widget>[],
               ),
             ),
             height: 0,
@@ -84,7 +83,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     var category = lsCategories[index];
                     return Container(
                       decoration: BoxDecoration(
-                        color: kYellowPastelColor,
+                        color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                       margin: EdgeInsets.all(12.0),
@@ -98,13 +97,16 @@ class _CategoryPageState extends State<CategoryPage> {
                         ),
                         trailing: IconButton(
                           icon: Icon(Icons.delete),
-                          color: Theme.of(context).primaryColorLight,
-                          onPressed: () => _categoryBlock.deleteCategory(category.id),
+                          color: Colors.black54,
+                          onPressed: () =>
+                              _categoryBlock.deleteCategory(category.id),
                         ),
                         title: Text(
                           category.title,
                         ),
-                        subtitle: category.desc == null ? SizedBox() : Text(
+                        subtitle: category.desc == null
+                            ? SizedBox()
+                            : Text(
                           category.desc,
                         ),
                       ),

@@ -10,8 +10,6 @@ import 'db/offline_db_provider.dart';
 import 'db/migrations/init_db.dart';
 import 'CustomWidgets/CustomAppBar.dart';
 import 'Classes/CashFlow.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   OfflineDbProvider.provider.initDB();
@@ -35,7 +33,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 1;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   List<Widget> _widgetOptions = <Widget>[
     SummaryPage(),
@@ -49,7 +47,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
     'Categories',
   ];
 
-  List<Function> plusButton = [];
+  List<Function> plusButton = [
+    null,
+    null,
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
