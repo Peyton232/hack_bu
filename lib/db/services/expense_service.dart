@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 
 abstract class ExpenseServiceBase {
-  Future<BuiltList<ExpenseModel>> getAllCategories();
+  Future<BuiltList<ExpenseModel>> getAllExpenses();
   Future<int> createExpense(ExpenseModel expense);
   Future<int> deleteExpense(int expenseId);
 }
@@ -23,7 +23,7 @@ class ExpenseService implements ExpenseServiceBase {
   }
 
   @override
-  Future<BuiltList<ExpenseModel>> getAllCategories() async {
+  Future<BuiltList<ExpenseModel>> getAllExpenses() async {
     var db = await OfflineDbProvider.provider.database;
     var res = await db.query("Expense");
     if (res.isEmpty) return BuiltList();
