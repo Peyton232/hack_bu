@@ -1,4 +1,4 @@
-import 'package:expense_manager/Insults/Insults.dart';
+import 'package:expense_manager/insults/Insults.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
