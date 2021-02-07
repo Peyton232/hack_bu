@@ -22,12 +22,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("Alert Dialog title"),
-          content: new Text("Alert Dialog body"),
+          title: new Text("Confirmation"),
+          content: new Text("Are you sure you wish to clear your data?"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Close"),
+              child: new Text("Yes"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                //function to clear data---------
+              },
+            ),
+            new FlatButton(
+              child: new Text("No"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -89,7 +96,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onToggle: (bool value) {
                   _showDialog();
                   setState(() {
-                    clearData = value;
+                    clearData = !value;
                   });
                 },
                 ),
