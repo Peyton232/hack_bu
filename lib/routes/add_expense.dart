@@ -6,6 +6,11 @@ import 'package:expense_manager/models/expense_model.dart';
 import 'package:flutter/material.dart';
 import '../insults/Insults.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:expense_manager/models/category_model.dart';
+import 'package:expense_manager/blocks/category_block.dart';
+import 'package:expense_manager/db/services/category_service.dart';
+
+import '../insults/Insults.dart';
 
 import '../globals.dart' as globals;
 
@@ -15,7 +20,7 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddExpenseState extends State<AddExpense> {
-  ExpenseBlock expenseBloc;
+  CategoryBlock categoryBloc;
   FocusNode _focus = new FocusNode();
   bool _showKeyboard = false;
   TextEditingController _amountTextController = TextEditingController();
@@ -24,7 +29,7 @@ class _AddExpenseState extends State<AddExpense> {
   @override
   void initState() {
     super.initState();
-    expenseBloc = ExpenseBlock(ExpenseService());
+    categoryBloc = CategoryBlock(CategoryService());
     _focus.addListener(_onFocusChange);
   }
 
@@ -34,7 +39,7 @@ class _AddExpenseState extends State<AddExpense> {
     });
   }
 
-  int selectedExpenseId = 0;
+  int selectedCategoryId = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +75,8 @@ class _AddExpenseState extends State<AddExpense> {
             ),
             Container(
               child: StreamBuilder(
-                stream: expenseBloc.expenseListStream,
-                builder: (_, AsyncSnapshot<BuiltList<ExpenseModel>> snap) {
+                stream: categoryBloc.categoryListStream,
+                builder: (_, AsyncSnapshot<BuiltList<CategoryModel>> snap) {
                   if (!snap.hasData)
                     return Center(
                       child: CircularProgressIndicator(),
@@ -82,19 +87,18 @@ class _AddExpenseState extends State<AddExpense> {
                       snap.data.length,
 
                           (int index) {
-                        var expenseModel = snap.data[index];
+                        var categoryModel = snap.data[index];
                         return Container(
                           margin: EdgeInsets.symmetric(
                             horizontal: 2.0,
                           ),
                           child: ChoiceChip(
                             selectedColor: Theme.of(context).accentColor,
-                            selected: expenseModel.id == selectedExpenseId,
-                            label: Text(expenseModel.title),
+                            selected: categoryModel.id == selectedCategoryId,
+                            label: Text(categoryModel.title),
                             onSelected: (selected) {
-                              setState(
-                                    () {
-                                  selectedExpenseId = expenseModel.id;
+                              setState(() {
+                                selectedCategoryId = categoryModel.id;
                                 },
                               );
                             },

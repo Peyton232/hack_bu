@@ -56,19 +56,26 @@ class _AddCategoryState extends State<AddCategory> {
                     height: 20.0,
                   ),
                   Text(
-                    'Category Name:',
+                    'Necessary expense:',
                     style: kActivityLabelTextStyle,
                   ),
-                  TextField(
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(hintText: "Enter Description"),
-                    onChanged: (String text) {
-                      if (text == null || text.trim() == "") return;
-                      var category = catgorySnap.data;
-                      var upated = category.rebuild((b) => b..desc = text);
-                      widget.categoryBloc.updateCreateCategory(upated);
-                    },
+                  Container(
+                  child: new ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text("Yes"),
+                        onPressed: (){
+                        },
+                        highlightColor: Colors.blueGrey,
+                      ),
+                      FlatButton(onPressed: (){
+                      }, child: Text("No"),
+                        highlightColor: Colors.blueGrey,
+                      )
+                    ],
                   ),
+              ),
                   SizedBox(
                     height: 30.0,
                   ),

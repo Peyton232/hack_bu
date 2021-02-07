@@ -2,6 +2,7 @@ library my_prj.globals;
 import 'Classes/CashFlow.dart';
 import 'Classes/CatClass.dart';
 import 'insults/insults.dart';
+import 'Classes/Activity.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,3 +19,6 @@ CashFlow totalCash = new CashFlow(
 CatClass catPie = new CatClass();
 
 Insults insultobj = new Insults();
+
+Activity handler = new Activity();
+int aCounter = 0;
