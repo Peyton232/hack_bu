@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Data/constants.dart';
 import '../CustomWidgets/ActivityCard.dart';
 
-class MonthlyActivity extends StatelessWidget {
+class RecentActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,6 +13,54 @@ class MonthlyActivity extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
+          ActivityCard(
+            name: 'Switch Game',
+            addSubtract: '-',
+            color: kRedColor,
+            amount: 64.94,
+            date: 'Feb 11, 2021',
+          ),
+          Divider(
+            color: Colors.black54,
+            height: 3.0,
+            thickness: 0.5,
+          ),
+          ActivityCard(
+            name: 'Birthday Gift',
+            addSubtract: '-',
+            color: kRedColor,
+            amount: 86.21,
+            date: 'February 10, 2021',
+          ),
+          Divider(
+            color: Colors.black54,
+            height: 3.0,
+            thickness: 0.5,
+          ),
+          ActivityCard(
+            name: 'Gas',
+            addSubtract: '-',
+            color: kRedColor,
+            amount: 27.68,
+            date: 'February 9, 2021',
+          ),
+          Divider(
+            color: Colors.black54,
+            height: 3.0,
+            thickness: 0.5,
+          ),
+          ActivityCard(
+            name: 'Salary',
+            addSubtract: '+',
+            color: kGreenColor,
+            amount: 86.64,
+            date: 'February 7, 2021',
+          ),
+          Divider(
+            color: Colors.black54,
+            height: 3.0,
+            thickness: 0.5,
+          ),
           ActivityCard(
             name: 'Salary',
             addSubtract: '+',

@@ -15,7 +15,7 @@ class _WeeklyChartState extends State<WeeklyChart> {
   static List<charts.Series<BarChartModel, String>> _createCashFlowData() {
     final weeklyIncomeData = [
       BarChartModel(
-        weeklyIncome: 256.64,
+        weeklyIncome: 86.64,
         day: 'Sun',
         barColor: charts.ColorUtil.fromDartColor(kGreenColor),
       ),
@@ -30,12 +30,12 @@ class _WeeklyChartState extends State<WeeklyChart> {
         barColor: charts.ColorUtil.fromDartColor(kGreenColor),
       ),
       BarChartModel(
-        weeklyIncome: 10.81,
+        weeklyIncome: 0.0,
         day: 'Wed',
         barColor: charts.ColorUtil.fromDartColor(kGreenColor),
       ),
       BarChartModel(
-        weeklyIncome: 6.54,
+        weeklyIncome: 0.0,
         day: 'Thurs',
         barColor: charts.ColorUtil.fromDartColor(kGreenColor),
       ),
@@ -53,27 +53,27 @@ class _WeeklyChartState extends State<WeeklyChart> {
 
     final weeklyExpenseData = [
       BarChartModel(
-        weeklyExpense: 68.76,
+        weeklyExpense: 0.0,
         day: 'Sun',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
       BarChartModel(
-        weeklyExpense: 5.99,
+        weeklyExpense: 0.0,
         day: 'Mon',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
       BarChartModel(
-        weeklyExpense: 0.0,
+        weeklyExpense: 27.68,
         day: 'Tue',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
       BarChartModel(
-        weeklyExpense: 50.81,
+        weeklyExpense: 86.21,
         day: 'Wed',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
       BarChartModel(
-        weeklyExpense: 26.54,
+        weeklyExpense: 64.94,
         day: 'Thurs',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
@@ -83,7 +83,7 @@ class _WeeklyChartState extends State<WeeklyChart> {
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),
       BarChartModel(
-        weeklyExpense: 4.31,
+        weeklyExpense: 0.0,
         day: 'Sat',
         barColor: charts.ColorUtil.fromDartColor(kRedColor),
       ),

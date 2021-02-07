@@ -1,4 +1,5 @@
 import 'package:expense_manager/CustomWidgets/ActivityCard.dart';
+import 'package:expense_manager/CustomWidgets/RecentActivity.dart';
 import 'package:expense_manager/Data/List.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,6 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // CustomAppBar(
-            //   appBarLabel: 'Home',
-            // ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 10.0,
@@ -72,48 +70,7 @@ class HomePage extends StatelessWidget {
                 horizontal: 15.0,
                 vertical: 5.0,
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: kCardShadow,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    ActivityCard(
-                      name: 'Salary',
-                      addSubtract: '+',
-                      color: kGreenColor,
-                      amount: 256.56,
-                      date: 'January 31, 2021',
-                    ),
-                    Divider(
-                      color: Colors.black54,
-                      height: 3.0,
-                      thickness: 0.5,
-                    ),
-                    ActivityCard(
-                      name: 'Phone Case',
-                      addSubtract: '-',
-                      color: kRedColor,
-                      amount: 21.64,
-                      date: 'January 25, 2021',
-                    ),
-                    Divider(
-                      color: Colors.black54,
-                      height: 3.0,
-                      thickness: 0.5,
-                    ),
-                    ActivityCard(
-                      name: 'Snack',
-                      addSubtract: '-',
-                      color: kRedColor,
-                      amount: 5.21,
-                      date: 'January 21, 2021',
-                    ),
-                  ],
-                ),
-              ),
+              child: RecentActivity(),
             ),
           ],
         ),
