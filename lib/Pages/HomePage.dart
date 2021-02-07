@@ -1,9 +1,31 @@
-import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'package:expense_manager/CustomWidgets/CustomAppBar.dart';
 import 'package:expense_manager/CustomWidgets/HomeMoneyCard.dart';
 
-class HomePage extends StatelessWidget {
+import '../models/category_model.dart';
+import '../models/expense_model.dart';
+import '../models/serializers.dart';
+import 'categoryPage.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  List<String> _tabs = ["Home", "Category", "Report"];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(vsync: this, length: _tabs.length);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,9 +112,24 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+        body: TabBarView(
+          controller: _tabController,
+          children: <Widget>[
+            Center(
+                child: Text(
+                  "Home",
+                  style: Theme.of(context).textTheme.display1,
+                )),
+            CategoryPage(),
+            Center(
+                child: Text(
+                  "Reports",
+                  style: Theme.of(context).textTheme.display1,
+                ))
+          ],
+        ))
   }
+
 }
 
 class Activity extends StatelessWidget {
@@ -134,3 +171,5 @@ class Activity extends StatelessWidget {
     );
   }
 }
+
+
