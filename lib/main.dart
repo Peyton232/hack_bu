@@ -1,10 +1,19 @@
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'Pages/HomePage.dart';
 import 'Pages/CategoryPage.dart';
 import 'Pages/SummaryPage.dart';
 
+import 'db/migrations/db_script.dart';
+import 'db/migrations/offline_db_provider.dart';
+import 'db/migrations/init_db.dart';
+import 'package:expense_manager/pages/homePage.dart';
+
+
 void main() {
+
+  OfflineDbProvider.provider.initDB();
   runApp(MyApp());
 }
 
@@ -12,10 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: BottomNavBar(),
+
     );
   }
+
 }
+
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -69,3 +82,4 @@ class _BottomNavBarState extends State<BottomNavBar> {
     );
   }
 }
+
