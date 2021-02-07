@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
+import '../Pages/categoryPage.dart';
 
 class CustomAppBar extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class CustomAppBar extends StatefulWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +43,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             GestureDetector(
               onTap: () {
-                print('Add expense/income');
+                Navigator.push(
+                    context,
+                  MaterialPageRoute(
+                    builder: (context){
+                      return  CategoryPage();
+                    }
+                  )
+                );
+
               },
               child: Icon(
                 Icons.add,

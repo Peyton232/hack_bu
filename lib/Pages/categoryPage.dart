@@ -4,6 +4,8 @@ import 'package:expense_manager/db/services/category_service.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/routes/addCategory.dart';
 import 'package:flutter/material.dart';
+import '../models/category_model.dart';
+
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -26,7 +28,8 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   Widget _getCategoryTab() {
-    return Column(
+    return new Scaffold(
+     body: new Column(
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(12.0),
@@ -92,6 +95,7 @@ class _CategoryPageState extends State<CategoryPage> {
           },
         )
       ],
+    ),
     );
   }
 }

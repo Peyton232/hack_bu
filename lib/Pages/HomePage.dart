@@ -7,130 +7,101 @@ import '../models/category_model.dart';
 import '../models/expense_model.dart';
 import '../models/serializers.dart';
 import 'categoryPage.dart';
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
-
-  List<String> _tabs = ["Home", "Category", "Report"];
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(vsync: this, length: _tabs.length);
-  }
+import 'package:expense_manager/Data/constants.dart';
 
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            CustomAppBar(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 5.0,
-              ),
-              child: Container(
-                height: 100.0,
-                //color: kGrayColor, //debugging purposes
-                child: Center(
-                  child: Text(
-                    '\$4,567.89',
-                    style: kHomeMoneyTextStyle,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.0,
-              ),
-              child: HomeMoneyCard(
-                cardName: 'Money Spent:',
-                amount: 123.45,
-                style: kHomeMoneySpentTextStyle,
-                addSubtract: '-',
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.0,
-              ),
-              child: HomeMoneyCard(
-                cardName: 'Money Gained: ',
-                amount: 256.64,
-                style: kHomeMoneyGainedTextStyle,
-                addSubtract: '+',
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15.0),
-              child: Text(
-                'Recent Activity:',
-                style: kHomeLabelTextStyle,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.0,
-                vertical: 5.0,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kGrayColor,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Activity(
-                      name: 'Salary',
-                      addSubtract: '+',
-                      color: kGreenColor,
-                      amount: 256.56,
+  class HomePage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+          body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  CustomAppBar(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 5.0,
                     ),
-                    Text("Activity stuff"),
-                    Text("Activity stuff"),
-                    Text("Activity stuff"),
-                  ],
-                ),
+                    child: Container(
+                      height: 100.0,
+                      //color: kGrayColor, //debugging purposes
+                      child: Center(
+                        child: Text(
+                          '\$4,567.89',
+                          style: kHomeMoneyTextStyle,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                    ),
+                    child: HomeMoneyCard(
+                      cardName: 'Money Spent:',
+                      amount: 123.45,
+                      style: kHomeMoneySpentTextStyle,
+                      addSubtract: '-',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                    ),
+                    child: HomeMoneyCard(
+                      cardName: 'Money Gained: ',
+                      amount: 256.64,
+                      style: kHomeMoneyGainedTextStyle,
+                      addSubtract: '+',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15.0),
+                    child: Text(
+                      'Recent Activity:',
+                      style: kHomeLabelTextStyle,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                      vertical: 5.0,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kGrayColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Activity(
+                            name: 'Salary',
+                            addSubtract: '+',
+                            color: kGreenColor,
+                            amount: 256.56,
+                          ),
+                          Text("Activity stuff"),
+                          Text("Activity stuff"),
+                          Text("Activity stuff"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: <Widget>[
-            Center(
-                child: Text(
-                  "Home",
-                  style: Theme.of(context).textTheme.display1,
-                )),
-            CategoryPage(),
-            Center(
-                child: Text(
-                  "Reports",
-                  style: Theme.of(context).textTheme.display1,
-                ))
-          ],
-        ))
+          ),
+      );
+    }
   }
 
-}
 
 class Activity extends StatelessWidget {
   final String name;
@@ -143,7 +114,7 @@ class Activity extends StatelessWidget {
     @required this.color,
     @required this.name,
     @required this.addSubtract,
-  });
+    });
 
   @override
   Widget build(BuildContext context) {
