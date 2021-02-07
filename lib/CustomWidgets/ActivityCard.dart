@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import '../CustomWidgets/Activity.dart';
+import '../CustomWidgets/ActivityCard.dart';
 
-class Activity extends StatelessWidget {
+class ActivityCard extends StatelessWidget {
   final String name;
   final double amount;
   final Color color;
   final String addSubtract;
+  final String date;
 
-  Activity({
+  ActivityCard({
     @required this.amount,
     @required this.color,
     @required this.name,
     @required this.addSubtract,
+    @required this.date,
   });
 
   @override
@@ -29,11 +31,21 @@ class Activity extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 20.0,
-            ),
+          Column(
+            children: <Widget>[
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
+              Text(
+                date,
+                style: TextStyle(
+                  color: Colors.black54,
+                ),
+              )
+            ],
           )
         ],
       ),

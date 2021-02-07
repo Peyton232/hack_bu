@@ -1,8 +1,9 @@
+import 'package:expense_manager/CustomWidgets/ActivityCard.dart';
+import 'package:expense_manager/Data/List.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_manager/CustomWidgets/CustomAppBar.dart';
 import 'package:expense_manager/CustomWidgets/HomeMoneyCard.dart';
-import '../CustomWidgets/Activity.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -31,30 +32,20 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.0,
-              ),
-              child: HomeMoneyCard(
-                cardName: 'Money Spent:',
-                amount: 123.45,
-                style: kHomeMoneySpentTextStyle,
-                addSubtract: '-',
-              ),
+            HomeMoneyCard(
+              cardName: 'Money Spent:',
+              amount: 123.45,
+              style: kHomeMoneySpentTextStyle,
+              addSubtract: '-',
             ),
             SizedBox(
               height: 20.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.0,
-              ),
-              child: HomeMoneyCard(
-                cardName: 'Money Gained: ',
-                amount: 256.64,
-                style: kHomeMoneyGainedTextStyle,
-                addSubtract: '+',
-              ),
+            HomeMoneyCard(
+              cardName: 'Money Gained: ',
+              amount: 256.64,
+              style: kHomeMoneyGainedTextStyle,
+              addSubtract: '+',
             ),
             SizedBox(
               height: 20.0,
@@ -79,33 +70,36 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Column(
                   children: <Widget>[
-                    Activity(
+                    ActivityCard(
                       name: 'Salary',
                       addSubtract: '+',
                       color: kGreenColor,
                       amount: 256.56,
+                      date: 'January 31, 2021',
                     ),
                     Divider(
                       color: Colors.black54,
                       height: 3.0,
                       thickness: 0.5,
                     ),
-                    Activity(
+                    ActivityCard(
                       name: 'Phone Case',
                       addSubtract: '-',
                       color: kRedColor,
                       amount: 21.64,
+                      date: 'January 25, 2021',
                     ),
                     Divider(
                       color: Colors.black54,
                       height: 3.0,
                       thickness: 0.5,
                     ),
-                    Activity(
+                    ActivityCard(
                       name: 'Snack',
                       addSubtract: '-',
                       color: kRedColor,
                       amount: 5.21,
+                      date: 'January 21, 2021',
                     ),
                   ],
                 ),
