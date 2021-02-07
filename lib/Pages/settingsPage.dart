@@ -1,3 +1,4 @@
+import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -48,13 +49,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings UI')),
+      appBar: AppBar(title: Text('Settings UI'),backgroundColor: kDarkTealColor,),
       body: SettingsList(
         // backgroundColor: Colors.orange,
         sections: [
           SettingsSection(
             title: 'Common',
-            // titleTextStyle: TextStyle(fontSize: 30),
+             titleTextStyle: TextStyle(color: kDarkTealColor),
             tiles: [
               SettingsTile(
                 title: 'Language',
@@ -70,11 +71,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsSection(
             title: 'Security',
+            titleTextStyle: TextStyle(color: kDarkTealColor),
             tiles: [
               SettingsTile.switchTile(
                 title: 'Lock app in background',
                 leading: Icon(Icons.phonelink_lock),
                 switchValue: lockInBackground,
+                switchActiveColor: kTealColor,
                 onToggle: (bool value) {
                   setState(() {
                     lockInBackground = value;
@@ -87,12 +90,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 enabled: notificationsEnabled,
                 leading: Icon(Icons.notifications_active),
                 switchValue: true,
+                switchActiveColor: kTealColor,
                 onToggle: (value) {},
               ),
               SettingsTile.switchTile(
                 title: 'Clear Data',
                 leading: Icon(Icons.delete),
                 switchValue: clearData,
+                switchActiveColor: kTealColor,
                 onToggle: (bool value) {
                   _showDialog();
                   setState(() {
@@ -104,6 +109,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsSection(
             title: 'Misc',
+            titleTextStyle: TextStyle(color: kDarkTealColor),
             tiles: [
               SettingsTile(
                   title: 'Terms of Service', leading: Icon(Icons.description)),
