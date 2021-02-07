@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
 import '../Pages/categoryPage.dart';
+import '../Pages/settingsPage.dart';
 
 class CustomAppBar extends StatefulWidget {
   @override
@@ -24,7 +25,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                print('Settings');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context){
+                          //return  settingsPage();
+                        }
+                    )
+                );
+
               },
               child: Icon(
                 Icons.dehaze,
