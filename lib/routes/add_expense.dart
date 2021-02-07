@@ -49,16 +49,19 @@ class _AddExpenseState extends State<AddExpense> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-                margin: EdgeInsets.only(bottom: 12.0),
-                child: Text(
-                  "(Placeholder for Expense | Income)",
-                  style: Theme.of(context).textTheme.title,
-                )),
+              child: new ButtonBar(
+            alignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+                child: Text("Expense"),
+                onPressed: (){},
+            ),
+            FlatButton(onPressed: (){}, child: Text("Gain"))
+
+          ],
+        )
+            ),
             Container(
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.circular(8.0),
-              //   color: Colors.white,
-              // ),
               child: StreamBuilder(
                 stream: expenseBloc.expenseListStream,
                 builder: (_, AsyncSnapshot<BuiltList<ExpenseModel>> snap) {
