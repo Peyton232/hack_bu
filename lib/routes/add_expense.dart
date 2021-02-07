@@ -98,7 +98,12 @@ class _AddExpenseState extends State<AddExpense> {
                             label: Text(categoryModel.title),
                             onSelected: (selected) {
                               setState(() {
-                                selectedCategoryId = categoryModel.id;
+                                //selectedCategoryId = categoryModel.id;
+                                if (categoryModel.title == "gas" || categoryModel.title == "bills"){
+                                  selectedCategoryId = 1;
+                                } else {
+                                  selectedCategoryId = 0;
+                                }
                                 },
                               );
                             },
@@ -129,7 +134,10 @@ class _AddExpenseState extends State<AddExpense> {
                         onSubmitted: (String text) {
                           if (expense) {
                             globals.totalCash.subAmount(double.parse(text));
-                            _showMaterialDialog();
+
+                            if (selectedCategoryId == 0) {
+                              _showMaterialDialog();
+                            }
                           } else {
                             globals.totalCash.addAmount(double.parse(text));
                           }

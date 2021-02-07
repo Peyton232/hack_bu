@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 
 CashFlow totalCash = new CashFlow(
   date: "2/7/2021",
-  amount: 0,
+  amount: 712.31,
   name: "money",
   addSubtract: "+-",
   color: Colors.green,
-  expense: 0,
-  income: 0,
+  expense: 230.89,
+  income: 943.20,
 );
 
 CatClass catPie = new CatClass();
