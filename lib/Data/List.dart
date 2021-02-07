@@ -1,7 +1,8 @@
 import 'package:expense_manager/Classes/CashFlow.dart';
-import '../CustomWidgets/ActivityCard.dart';
 import 'package:flutter/material.dart';
 import '../Data/constants.dart';
+import '../Classes/BarChartModel.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 final List<CashFlow> listOfCashFlow = [
   CashFlow(
@@ -12,11 +13,3 @@ final List<CashFlow> listOfCashFlow = [
     color: kGreenColor,
   ),
 ];
-
-// ActivityCard(
-// name: 'Salary',
-// addSubtract: '+',
-// color: kGreenColor,
-// amount: 256.56,
-// date: "January 31, 2021",
-// ),

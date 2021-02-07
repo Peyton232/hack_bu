@@ -15,7 +15,6 @@ class CustomAppBar extends StatefulWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +38,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         }
                     )
                 );
-
               },
               child: Icon(
                 Icons.dehaze,
@@ -58,10 +56,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddExpense())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddExpense()));
               },
               child: Icon(
                 Icons.add,

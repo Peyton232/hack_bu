@@ -1,4 +1,3 @@
-
 import 'package:expense_manager/CustomWidgets/ActivityCard.dart';
 import 'package:expense_manager/Data/List.dart';
 import 'package:expense_manager/Data/constants.dart';
@@ -19,6 +18,7 @@ import '../Classes/CashFlow.dart';
 
 import '../globals.dart' as globals;
 
+
 class HomePage extends StatelessWidget {
 
   @override
@@ -29,9 +29,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            CustomAppBar(
-              appBarLabel: 'Home',
-            ),
+            // CustomAppBar(
+            //   appBarLabel: 'Home',
+            // ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 10.0,
@@ -153,7 +153,6 @@ Widget _getExpenses() {
   return ListView.builder(
     itemCount: ls.length,
     itemBuilder: (context, index) {
-
       var expense = ls[index];
       return Container(
         decoration: BoxDecoration(
@@ -184,8 +183,6 @@ Widget _getExpenses() {
   );
 }
 
-
-
 class Activity extends StatelessWidget {
   final String name;
   final double amount;
@@ -197,7 +194,7 @@ class Activity extends StatelessWidget {
     @required this.color,
     @required this.name,
     @required this.addSubtract,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
