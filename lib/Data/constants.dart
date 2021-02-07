@@ -29,7 +29,7 @@ const kOrangePastelColor = Color(0xfffeb144);
 const kCardShadow = [
   BoxShadow(
     color: Colors.black26,
-    offset: Offset(3.0, 3.0),
+    offset: Offset(2.0, 3.0),
     blurRadius: 3.0,
   ),
 ];
