@@ -6,9 +6,9 @@ import 'Pages/SummaryPage.dart';
 import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
 import 'db/migrations/init_db.dart';
+import 'CustomWidgets/CustomAppBar.dart';
 
 void main() {
-
   OfflineDbProvider.provider.initDB();
   runApp(MyApp());
 }
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       home: BottomNavBar(),
     );
   }
-
 }
 
 class BottomNavBar extends StatefulWidget {
@@ -39,6 +38,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
     CategoryPage(),
   ];
 
+  List<String> appBarTitle = [
+    'Summary',
+    'Home',
+    'Categories',
+  ];
+
+  List<Function> plusButton = [];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -48,30 +55,66 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kDarkTealColor,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.insert_chart),
-            label: 'Summary',
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          CustomAppBar(
+            appBarLabel: appBarTitle.elementAt(_selectedIndex),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.house),
-            label: 'Home',
+          Expanded(
+            flex: 1,
+            child: _widgetOptions.elementAt(_selectedIndex),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Categories',
+          BottomNavigationBar(
+            backgroundColor: kDarkTealColor,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.insert_chart),
+                label: 'Summary',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.house),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard),
+                label: 'Categories',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: kLightTealColor,
+            unselectedItemColor: Colors.black54,
+            onTap: _onItemTapped,
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: kLightTealColor,
-        unselectedItemColor: Colors.black54,
-        onTap: _onItemTapped,
       ),
     );
   }
 }
+
+// Scaffold(
+// body: Center(
+// child: _widgetOptions.elementAt(_selectedIndex),
+// ),
+// bottomNavigationBar: BottomNavigationBar(
+// backgroundColor: kDarkTealColor,
+// items: const <BottomNavigationBarItem>[
+// BottomNavigationBarItem(
+// icon: Icon(Icons.insert_chart),
+// label: 'Summary',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(Icons.house),
+// label: 'Home',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(Icons.dashboard),
+// label: 'Categories',
+// ),
+// ],
+// currentIndex: _selectedIndex,
+// selectedItemColor: kLightTealColor,
+// unselectedItemColor: Colors.black54,
+// onTap: _onItemTapped,
+// ),
+// );

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
  */
 
 //UI Colors
-const kTealColor = Color(0xff63b7b7);
+const kTealColor = Color(0xff63b1b7);
 const kGrayColor = Color(0xffefefef);
 const kLightTealColor = Color(0xff93dcdc);
 const kDarkTealColor = Color(0xff4c8989);

@@ -1,4 +1,4 @@
-import 'package:charts_flutter/flutter.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
 class BarChartModel {
@@ -6,13 +6,13 @@ class BarChartModel {
   String year;
   double monthlyIncome;
   double monthlyExpense;
-  Color color;
+  final charts.Color barColor;
 
   BarChartModel({
-    @required this.month,
-    @required this.year,
-    @required this.monthlyIncome,
-    @required this.monthlyExpense,
-    @required this.color,
+    this.month,
+    this.year,
+    this.monthlyIncome,
+    this.monthlyExpense,
+    this.barColor,
   });
 }
