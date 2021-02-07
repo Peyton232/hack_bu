@@ -36,13 +36,14 @@ class ActivityCard extends StatelessWidget {
               Text(
                 name,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                 ),
               ),
               Text(
                 date,
                 style: TextStyle(
                   color: Colors.black54,
+                  fontSize: 13.0,
                 ),
               )
             ],

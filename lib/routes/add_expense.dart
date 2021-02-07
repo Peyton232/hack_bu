@@ -40,6 +40,7 @@ class _AddExpenseState extends State<AddExpense> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text("Add New Expense/Gain"),
         backgroundColor: kDarkTealColor,
       ),
@@ -79,6 +80,7 @@ class _AddExpenseState extends State<AddExpense> {
                   return Wrap(
                     children: List.generate(
                       snap.data.length,
+
                           (int index) {
                         var expenseModel = snap.data[index];
                         return Container(
@@ -127,7 +129,6 @@ class _AddExpenseState extends State<AddExpense> {
                           } else {
                             globals.totalCash.addAmount(double.parse(text));
                           }
-
                         },
                       ),
                     ),

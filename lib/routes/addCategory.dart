@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:expense_manager/Data/constants.dart';
 import 'package:expense_manager/blocks/category_block.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +9,13 @@ import '../globals.dart' as globals;
 class AddCategory extends StatefulWidget {
   final CategoryBlock categoryBloc;
 
-  const AddCategory({Key key, this.categoryBloc}) : super(key: key);
+  AddCategory({this.categoryBloc});
 
   @override
   _AddCategoryState createState() => _AddCategoryState();
 }
 
 class _AddCategoryState extends State<AddCategory> {
-
-
   @override
   void initState() {
     super.initState();
@@ -25,7 +26,9 @@ class _AddCategoryState extends State<AddCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kDarkTealColor,
         title: Text("Add New Category"),
+        elevation: 0.0,
       ),
       body: Container(
           padding: EdgeInsets.all(12.0),
@@ -34,44 +37,68 @@ class _AddCategoryState extends State<AddCategory> {
             builder: (ctxt, AsyncSnapshot<CategoryModel> catgorySnap) {
               if (!catgorySnap.hasData) return CircularProgressIndicator();
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  Text(
+                    'Category Name:',
+                    style: kActivityLabelTextStyle,
+                  ),
                   TextField(
-                      decoration: InputDecoration(labelText: "Title"),
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(hintText: "Enter Name"),
                       onChanged: (String text) {
                         if (text == null || text.trim() == "") return;
                         var category = catgorySnap.data;
                         var upated = category.rebuild((b) => b..title = text);
                         widget.categoryBloc.updateCreateCategory(upated);
                       }),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    'Category Name:',
+                    style: kActivityLabelTextStyle,
+                  ),
                   TextField(
-                      decoration: InputDecoration(labelText: "Description"),
-                      maxLines: 2,
-                      onChanged: (String text) {
-                        if (text == null || text.trim() == "") return;
-                        var category = catgorySnap.data;
-                        var upated = category.rebuild((b) => b..desc = text);
-                        widget.categoryBloc.updateCreateCategory(upated);
-                      }),
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(hintText: "Enter Description"),
+                    onChanged: (String text) {
+                      if (text == null || text.trim() == "") return;
+                      var category = catgorySnap.data;
+                      var upated = category.rebuild((b) => b..desc = text);
+                      widget.categoryBloc.updateCreateCategory(upated);
+                    },
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Container(
-                    child: Text("Pick An Icon:"),
-                    margin: EdgeInsets.all(12.0),
+                    child: Text(
+                      "Pick An Icon:",
+                      style: kActivityLabelTextStyle,
+                    ),
+                    margin: EdgeInsets.only(top: 12.0),
                   ),
                   Expanded(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
-                          child: _showIconGrid(catgorySnap.data))),
+                    child: Container(
+                      //padding: EdgeInsets.symmetric(vertical: 12.0),
+                      child: _showIconGrid(catgorySnap.data),
+                    ),
+                  ),
                   RaisedButton(
                     child: Text("Create"),
-                    onPressed: catgorySnap.data.title == null ? null : () async {
-                      var createdId = await widget.categoryBloc.createNewCategory(catgorySnap.data);
-                      if(createdId > 0) {
-                        Navigator.of(context).pop();
-                        widget.categoryBloc.getCategories();
-                      }
-                      else {
-                        //show error here...
-                      }
-                    },
+                    onPressed: catgorySnap.data.title == null
+                        ? null
+                        : () async {
+                            var createdId = await widget.categoryBloc
+                                .createNewCategory(catgorySnap.data);
+                            if (createdId > 0) {
+                              Navigator.of(context).pop();
+                              widget.categoryBloc.getCategories();
+                            } else {
+                              //show error here...
+                            }
+                          },
                   ),
                 ],
               );
@@ -141,15 +168,15 @@ class _AddCategoryState extends State<AddCategory> {
     ];
 
     return GridView.count(
-      crossAxisCount: 8,
+      crossAxisCount: 7,
       children: List.generate(ls.length, (index) {
         var iconData = ls[index];
         return IconButton(
             color: category.iconCodePoint == null
-                ? null
+                ? Colors.black26
                 : category.iconCodePoint == iconData.codePoint
-                ? Colors.yellowAccent
-                : null,
+                    ? kDarkTealColor
+                    : Colors.black26,
             onPressed: () {
               var upated = category
                   .rebuild((b) => b..iconCodePoint = iconData.codePoint);

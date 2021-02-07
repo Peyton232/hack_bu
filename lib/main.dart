@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
-import 'Pages/CategoryPage.dart';
+import 'Pages/categoryPage.dart';
 import 'Pages/SummaryPage.dart';
 import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
@@ -12,7 +12,6 @@ import 'CustomWidgets/CustomAppBar.dart';
 import 'Classes/CashFlow.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-
 
 void main() {
   OfflineDbProvider.provider.initDB();
@@ -28,9 +27,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class BottomNavBar extends StatefulWidget {
-
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
@@ -60,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
-  Widget _insultAlert(){
+  Widget _insultAlert() {
     var insultobj = new Insults();
     return CupertinoAlertDialog(
       title: Text("Spent to Much"),
@@ -68,21 +65,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
       actions: [
         CupertinoDialogAction(
           child: Text("Close"),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
         CupertinoDialogAction(
           child: Text("I Agree"),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
       ],
     );
-
   }
-
 
   @override
   Widget build(BuildContext context) {
