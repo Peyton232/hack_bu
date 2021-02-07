@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_manager/Data/constants.dart';
-import '../Pages/categoryPage.dart';
+import '../Pages/category_Page.dart';
 import '../Pages/settingsPage.dart';
 import '../routes/add_expense.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'Pages/HomePage.dart';
-import 'Pages/CategoryPage.dart';
+import 'Pages/category_Page.dart';
 import 'Pages/SummaryPage.dart';
 import 'db/migrations/db_script.dart';
 import 'db/offline_db_provider.dart';
