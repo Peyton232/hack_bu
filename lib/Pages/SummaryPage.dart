@@ -122,7 +122,7 @@ class _SummaryPageState extends State<SummaryPage> {
               selectedTime == Time.monthly
                   ? "Monthly Activity:"
                   : "Weekly Activity:",
-              style: kHomeLabelTextStyle,
+              style: kActivityLabelTextStyle,
             ),
             Padding(
               padding: EdgeInsets.symmetric(

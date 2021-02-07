@@ -19,12 +19,9 @@ import '../Classes/CashFlow.dart';
 
 import '../globals.dart' as globals;
 
-
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -69,7 +66,7 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.only(left: 15.0),
               child: Text(
                 'Recent Activity:',
-                style: kHomeLabelTextStyle,
+                style: kActivityLabelTextStyle,
               ),
             ),
             Padding(
