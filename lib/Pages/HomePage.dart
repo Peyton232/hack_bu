@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Spent:',
-              amount: 123.45,
+              amount: globals.totalCash.expense.toString(),
               style: kHomeMoneySpentTextStyle,
               addSubtract: '-',
             ),
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Gained: ',
-              amount: 256.64,
+              amount: globals.totalCash.income.toString(),
               style: kHomeMoneyGainedTextStyle,
               addSubtract: '+',
             ),

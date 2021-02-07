@@ -119,6 +119,7 @@ class _AddExpenseState extends State<AddExpense> {
       "500",
       "1000",
     ];
+    bool expense = true;
     return Container(
         height: 53.0,
         decoration: BoxDecoration(
@@ -144,7 +145,12 @@ class _AddExpenseState extends State<AddExpense> {
                           selection: TextSelection.collapsed(offset: key.length),
                         );
                   });
-                  globals.totalCash.subAmount(double.parse(key));
+                  if (expense){
+                    globals.totalCash.subAmount(double.parse(key));
+                  } else {
+                    globals.totalCash.addAmount(double.parse(key));
+                  }
+
                 },
                 child: Text(key),
                 //child: globals.totalCash.addAmount(double.parse(key));

@@ -22,6 +22,8 @@ class CashFlow {
     @required this.name,
     @required this.addSubtract,
     @required this.color,
+    @required this.income,
+    @required this.expense,
   });
 
   void addAmount(double num){
