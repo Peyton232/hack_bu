@@ -42,7 +42,7 @@ class RecentActivity extends StatelessWidget {
             addSubtract: '-',
             color: kRedColor,
             amount: 27.68,
-            date: 'February 9, 2021',
+            date: 'February 7, 2021',
           ),
           Divider(
             color: Colors.black54,

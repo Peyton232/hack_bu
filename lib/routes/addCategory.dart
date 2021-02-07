@@ -56,21 +56,29 @@ class _AddCategoryState extends State<AddCategory> {
                     height: 20.0,
                   ),
                   Text(
-                    'Category Name:',
+                    'Category Description:',
                     style: kActivityLabelTextStyle,
                   ),
-                  TextField(
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(hintText: "Enter Description"),
-                    onChanged: (String text) {
-                      if (text == null || text.trim() == "") return;
-                      var category = catgorySnap.data;
-                      var upated = category.rebuild((b) => b..desc = text);
-                      widget.categoryBloc.updateCreateCategory(upated);
-                    },
+                  Container(
+                    child: new ButtonBar(
+                      alignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        FlatButton(
+                          child: Text("Yes"),
+                          color:  Colors.teal,
+                          onPressed: (){
+                          },
+                          highlightColor: Colors.blueGrey,
+                        ),
+                        FlatButton(onPressed: (){
+                        }, child: Text("No"),
+                          highlightColor: Colors.blueGrey,
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   Container(
                     child: Text(
@@ -85,20 +93,37 @@ class _AddCategoryState extends State<AddCategory> {
                       child: _showIconGrid(catgorySnap.data),
                     ),
                   ),
-                  RaisedButton(
-                    child: Text("Create"),
-                    onPressed: catgorySnap.data.title == null
+                  GestureDetector(
+                    onTap: catgorySnap.data.title == null
                         ? null
                         : () async {
-                            var createdId = await widget.categoryBloc
-                                .createNewCategory(catgorySnap.data);
-                            if (createdId > 0) {
-                              Navigator.of(context).pop();
-                              widget.categoryBloc.getCategories();
-                            } else {
-                              //show error here...
-                            }
-                          },
+                      var createdId = await widget.categoryBloc
+                          .createNewCategory(catgorySnap.data);
+                      if (createdId > 0) {
+                        Navigator.of(context).pop();
+                        widget.categoryBloc.getCategories();
+                      } else {
+                        //show error here...
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Container(
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: kLightTealColor,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Create",
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               );
@@ -175,8 +200,8 @@ class _AddCategoryState extends State<AddCategory> {
             color: category.iconCodePoint == null
                 ? Colors.black26
                 : category.iconCodePoint == iconData.codePoint
-                    ? kDarkTealColor
-                    : Colors.black26,
+                ? kDarkTealColor
+                : Colors.black26,
             onPressed: () {
               var upated = category
                   .rebuild((b) => b..iconCodePoint = iconData.codePoint);

@@ -31,6 +31,7 @@ class CashFlow {
     amount += num;
     int fac = pow(10, 2);
     amount = (amount * fac).round() / fac;
+    income += amount;
     color = Colors.green;
   }
 
@@ -38,6 +39,7 @@ class CashFlow {
     amount -= num;
     int fac = pow(10, 2);
     amount = (amount * fac).round() / fac;
+    expense += amount;
     color = Colors.red;
   }
 }

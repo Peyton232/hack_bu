@@ -51,7 +51,7 @@ const kHomeLabelTextStyle = TextStyle(
 );
 
 const kActivityLabelTextStyle = TextStyle(
-  fontSize: 20.0,
+  fontSize: 18.0,
   fontWeight: FontWeight.w400,
 );
 
