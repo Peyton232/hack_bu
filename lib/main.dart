@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'db/migrations/db_script.dart';
-import 'db/migrations/offline_db_provider.dart';
+import 'db/offline_db_provider.dart';
 import 'db/migrations/init_db.dart';
 import 'package:expense_manager/pages/homePage.dart';
 
