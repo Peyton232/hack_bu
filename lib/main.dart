@@ -10,6 +10,8 @@ import 'db/offline_db_provider.dart';
 import 'db/migrations/init_db.dart';
 import 'CustomWidgets/CustomAppBar.dart';
 import 'Classes/CashFlow.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 void main() {

@@ -1,4 +1,5 @@
 import 'package:built_collection/built_collection.dart';
+import 'package:expense_manager/Data/constants.dart';
 import 'package:expense_manager/blocks/expense_block.dart';
 import 'package:expense_manager/db/services/expense_service.dart';
 import 'package:expense_manager/models/expense_model.dart';
@@ -37,149 +38,197 @@ class _AddExpenseState extends State<AddExpense> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Add New Expense"),
-        ),
-        body: Container(
-          padding: EdgeInsets.all(12.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                  margin: EdgeInsets.only(bottom: 12.0),
-                  child: Text(
-                    "Pick Expense",
-                    style: Theme.of(context).textTheme.title,
-                  )),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.white,
-                ),
-                child: StreamBuilder(
-                  stream: expenseBloc.expenseListStream,
-                  builder: (_, AsyncSnapshot<BuiltList<ExpenseModel>> snap) {
-                    if (!snap.hasData)
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
+      appBar: AppBar(
+        title: Text("Add New Expense/Gain"),
+        backgroundColor: kDarkTealColor,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+                child: new ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text("Expense"),
+                      onPressed: (){
+                        expense = true;
+                      },
+                      highlightColor: Colors.blueGrey,
+                    ),
+                    FlatButton(onPressed: (){
+                      expense = false;
+                    }, child: Text("Gain"),
+                    highlightColor: Colors.blueGrey,
+                    )
+                  ],
+                )
+            ),
+            Container(
+              child: StreamBuilder(
+                stream: expenseBloc.expenseListStream,
+                builder: (_, AsyncSnapshot<BuiltList<ExpenseModel>> snap) {
+                  if (!snap.hasData)
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
 
-                    return Wrap(
-                        children: List.generate(snap.data.length, (int index) {
-                          var expenseModel = snap.data[index];
-                          return Container(
-                            margin: EdgeInsets.symmetric(
-                              horizontal: 2.0,
-                            ),
-                            child: ChoiceChip(
-                              selectedColor: Theme.of(context).accentColor,
-                              selected: expenseModel.id == selectedExpenseId,
-                              label: Text(expenseModel.title),
-                              onSelected: (selected) {
-                                setState(() {
+                  return Wrap(
+                    children: List.generate(
+                      snap.data.length,
+                          (int index) {
+                        var expenseModel = snap.data[index];
+                        return Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 2.0,
+                          ),
+                          child: ChoiceChip(
+                            selectedColor: Theme.of(context).accentColor,
+                            selected: expenseModel.id == selectedExpenseId,
+                            label: Text(expenseModel.title),
+                            onSelected: (selected) {
+                              setState(
+                                    () {
                                   selectedExpenseId = expenseModel.id;
-                                });
-                              },
-                            ),
-                          );
-                        }));
-                  },
-                ),
-              ),
-              Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                          child: Container(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
-                            child: TextField(
-                                controller: _amountTextController,
-                                focusNode: _focus,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  labelText: "Amount",
-                                ),
-                                maxLines: 1,
-                                onChanged: (String text) {},
-                                onSubmitted: (String text){
-                                  if (expense){
-                                    globals.totalCash.subAmount(double.parse(text));
-                                  } else {
-                                    globals.totalCash.addAmount(double.parse(text));
-                                  }
-                                  _showMaterialDialog();
                                 },
-                           ),
-                          )),
-                      _showKeyboard ? _shortcutKeyboard() : SizedBox()
-                    ],
-                  )),
-            ],
-          ),
-        ));
-  }
-
-  Widget _shortcutKeyboard() {
-
-    var keyboardKeys = [
-      "50",
-      "100",
-      "500",
-      "1000",
-    ];
-    bool expense = true;
-    return Container(
-        height: 53.0,
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-        ),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: keyboardKeys.length,
-          itemBuilder: (_, index) {
-            var key = keyboardKeys[index];
-            Insults meanWords = new Insults();
-            return Container(
-              padding: EdgeInsets.symmetric(horizontal: 6.0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  border: Border.all(color: Theme.of(context).accentColor)),
-              child: FlatButton(
-                onPressed: () {
-                            _showMaterialDialog();
-                            setState(() {
-                            });
-                  setState(() {
-                    _amountTextController.value =
-                        _amountTextController.value.copyWith(
-                          text: key,
-                          selection: TextSelection.collapsed(offset: key.length),
+                              );
+                            },
+                          ),
                         );
-                  });
-
+                      },
+                    ),
+                  );
                 },
-
-                child: Text(key),
-                //child: globals.totalCash.addAmount(double.parse(key));
               ),
+            ),
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: 12.0),
+                      child: TextField(
+                        controller: _amountTextController,
+                        focusNode: _focus,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: "Enter Amount",
+                        ),
+                        maxLines: 1,
+                        onChanged: (String text) {},
+                        onSubmitted: (String text) {
+                          if (expense) {
+                            globals.totalCash.subAmount(double.parse(text));
+                            _showMaterialDialog();
+                          } else {
+                            globals.totalCash.addAmount(double.parse(text));
+                          }
 
-            );
-          },
-        ));
+                        },
+                      ),
+                    ),
+                  ),
+                  //_showKeyboard ? _shortcutKeyboard() : SizedBox()
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
+
+  // Widget _shortcutKeyboard() {
+  //   // var keyboardKeys = [
+  //   //   "50",
+  //   //   "100",
+  //   //   "500",
+  //   //   "1000",
+  //   // ];
+  //   bool expense = true;
+  //   return Row(
+  //     children: <Widget>[
+  //       Container(
+  //         color: kLightTealColor,
+  //         child: Text(
+  //           '50',
+  //           style: TextStyle(
+  //             color: Colors.white,
+  //             fontSize: 15.0,
+  //           ),
+  //         ),
+  //       ),
+  //       Container(
+  //         color: kLightTealColor,
+  //         child: Text(
+  //           '100',
+  //           style: TextStyle(
+  //             color: Colors.white,
+  //             fontSize: 15.0,
+  //           ),
+  //         ),
+  //       ),
+  //       Container(
+  //         color: kLightTealColor,
+  //         child: Text(
+  //           '500',
+  //           style: TextStyle(
+  //             color: Colors.white,
+  //             fontSize: 15.0,
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  //   // ListView.builder(
+  //   //   scrollDirection: Axis.horizontal,
+  //   //   itemCount: keyboardKeys.length,
+  //   //   itemBuilder: (_, index) {
+  //   //     var key = keyboardKeys[index];
+  //   //     Insults meanWords = new Insults();
+  //   //     return GestureDetector(
+  //   //       onTap: () {
+  //   //         _showMaterialDialog();
+  //   //         setState(() {});
+  //   //         setState(
+  //   //           () {
+  //   //             _amountTextController.value =
+  //   //                 _amountTextController.value.copyWith(
+  //   //               text: key,
+  //   //               selection: TextSelection.collapsed(offset: key.length),
+  //   //             );
+  //   //           },
+  //   //         );
+  //   //       },
+  //   //       child: Container(
+  //   //         padding: EdgeInsets.symmetric(horizontal: 6.0),
+  //   //         decoration: BoxDecoration(
+  //   //           borderRadius: BorderRadius.circular(15.0),
+  //   //           //border: Border.all(color: Theme.of(context).accentColor),
+  //   //         ),
+  //   //         child: Text(
+  //   //           key,
+  //   //           style: TextStyle(
+  //   //             color: Colors.white,
+  //   //             fontSize: 15.0,
+  //   //           ),
+  //   //         ),
+  //   //       ),
+  //   //     );
+  //   //   },
+  //   // ),
+  // }
 
   _showMaterialDialog() {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
           title: new Text("Insult"),
-          content: new Text(
-              globals.insultobj.getInsult
-          ),
+          content: new Text(globals.insultobj.getInsult),
           actions: <Widget>[
             FlatButton(
               child: Text('Close me!'),
