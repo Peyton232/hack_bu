@@ -55,6 +55,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 switchValue: true,
                 onToggle: (value) {},
               ),
+              /*SettingsTile.switchTile(
+                title: 'Clear Data',
+                leading: Icon(Icons.delete),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  color: Theme.of(context).primaryColorLight,
+                  //onPressed: () => delete_all_data,
+                ),
+              ),*/
             ],
           ),
           SettingsSection(
