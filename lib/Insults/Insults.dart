@@ -5,9 +5,9 @@ class Insults{
     "You did not have to buy that you dunce!", "Your an idiot sandwich!"
   ];
 
-  void getInsult(){
+  String get getInsult{
     var rng = new Random();
-    print(insultString[rng.nextInt(insultString.length)]);
+    return insultString[rng.nextInt(insultString.length)];
   }
 
 }

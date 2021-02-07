@@ -1,3 +1,5 @@
+import 'package:expense_manager/Insults/Insults.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'models/category_model.dart';
 import 'models/expense_model.dart';
@@ -30,6 +32,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   TabController _tabController;
 
   List<String> _tabs = ["Home", "Category", "Report"];
+  var insultobj = new Insults();
 
   List<CategoryModel> _lsCateogies = List<CategoryModel>();
 
@@ -104,6 +107,29 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
+  Widget _insultAlert(){
+    return CupertinoAlertDialog(
+      title: Text("Spent to Much"),
+      content: Text(insultobj.getInsult),
+      actions: [
+        CupertinoDialogAction(
+          child: Text("Close"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: Text("I Agree"),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    );
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,10 +148,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: <Widget>[
             Center(
-                child: Text(
-                  "Home",
-                  style: Theme.of(context).textTheme.display1,
-                )),
+              child: Text("Home"),
+            ),
             _getCategoryTab(),
             Center(child: Text("Reports", style: Theme.of(context).textTheme.display1,))
           ],
