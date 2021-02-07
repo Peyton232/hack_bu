@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 
 class BarChartModel {
   String month;
-  String year;
+  String day;
+  double weeklyIncome;
+  double weeklyExpense;
+
   double monthlyIncome;
   double monthlyExpense;
   final charts.Color barColor;
 
   BarChartModel({
     this.month,
-    this.year,
     this.monthlyIncome,
     this.monthlyExpense,
     this.barColor,
+    this.day,
+    this.weeklyExpense,
+    this.weeklyIncome,
   });
 }
