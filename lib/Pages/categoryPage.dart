@@ -45,9 +45,6 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
       body: new Column(
         children: <Widget>[
-          CustomAppBar(
-            appBarLabel: 'Categories',
-          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
 
