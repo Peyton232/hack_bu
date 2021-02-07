@@ -56,7 +56,7 @@ class _AddCategoryState extends State<AddCategory> {
                     height: 20.0,
                   ),
                   Text(
-                    'Category Name:',
+                    'Category Description:',
                     style: kActivityLabelTextStyle,
                   ),
                   TextField(
@@ -70,7 +70,7 @@ class _AddCategoryState extends State<AddCategory> {
                     },
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   Container(
                     child: Text(
@@ -85,9 +85,8 @@ class _AddCategoryState extends State<AddCategory> {
                       child: _showIconGrid(catgorySnap.data),
                     ),
                   ),
-                  RaisedButton(
-                    child: Text("Create"),
-                    onPressed: catgorySnap.data.title == null
+                  GestureDetector(
+                    onTap: catgorySnap.data.title == null
                         ? null
                         : () async {
                             var createdId = await widget.categoryBloc
@@ -99,6 +98,24 @@ class _AddCategoryState extends State<AddCategory> {
                               //show error here...
                             }
                           },
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Container(
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: kLightTealColor,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Create",
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               );

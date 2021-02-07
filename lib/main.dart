@@ -47,7 +47,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
     'Categories',
   ];
 
-  List<Function> plusButton = [];
+  List<Function> plusButton = [
+    null,
+    null,
+  ];
 
   void _onItemTapped(int index) {
     setState(() {

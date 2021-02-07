@@ -1,3 +1,4 @@
+import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'languages_screen.dart';
@@ -14,7 +15,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings UI')),
+      appBar: AppBar(
+        title: Text('Settings'),
+        backgroundColor: kDarkTealColor,
+      ),
       body: SettingsList(
         // backgroundColor: Colors.orange,
         sections: [
@@ -31,13 +35,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       builder: (BuildContext context) => LanguagesScreen()));
                 },
               ),
-
             ],
           ),
           SettingsSection(
             title: 'Security',
             tiles: [
               SettingsTile.switchTile(
+                switchActiveColor: kLightTealColor,
                 title: 'Lock app in background',
                 leading: Icon(Icons.phonelink_lock),
                 switchValue: lockInBackground,
@@ -49,6 +53,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               SettingsTile.switchTile(
+                switchActiveColor: kLightTealColor,
                 title: 'Enable Notifications',
                 enabled: notificationsEnabled,
                 leading: Icon(Icons.notifications_active),
