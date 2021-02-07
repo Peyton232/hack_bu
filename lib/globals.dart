@@ -2,6 +2,7 @@ library my_prj.globals;
 import 'Classes/CashFlow.dart';
 import 'package:flutter/material.dart';
 
+
 CashFlow totalCash = new CashFlow(
   date: "2/7/2021",
   amount: 2349.28,
