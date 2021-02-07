@@ -5,6 +5,7 @@ import 'db/migrations/init_db.dart';
 import 'package:expense_manager/pages/homePage.dart';
 
 void main() {
+
   OfflineDbProvider.provider.initDB();
   runApp(MyApp());
 }

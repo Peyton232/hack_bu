@@ -3,6 +3,7 @@ import '../models/category_model.dart';
 import '../models/expense_model.dart';
 import '../models/serializers.dart';
 import 'categoryPage.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
