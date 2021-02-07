@@ -1,7 +1,7 @@
 import 'package:built_collection/built_collection.dart';
-import 'package:expense_manager/blocks/category_block.dart';
-import 'package:expense_manager/db/services/category_service.dart';
-import 'package:expense_manager/models/category_model.dart';
+import 'package:expense_manager/blocks/expense_block.dart';
+import 'package:expense_manager/db/services/expense_service.dart';
+import 'package:expense_manager/models/expense_model.dart';
 import 'package:flutter/material.dart';
 import '../insults/Insults.dart';
 import '../globals.dart' as globals;
@@ -12,7 +12,7 @@ class AddExpense extends StatefulWidget {
 }
 
 class _AddExpenseState extends State<AddExpense> {
-  CategoryBlock categoryBloc;
+  ExpenseBlock expenseBloc;
   FocusNode _focus = new FocusNode();
   bool _showKeyboard = false;
   TextEditingController _amountTextController = TextEditingController();
@@ -20,7 +20,7 @@ class _AddExpenseState extends State<AddExpense> {
   @override
   void initState() {
     super.initState();
-    categoryBloc = CategoryBlock(CategoryService());
+    expenseBloc = ExpenseBlock(ExpenseService());
     _focus.addListener(_onFocusChange);
   }
 
@@ -30,7 +30,7 @@ class _AddExpenseState extends State<AddExpense> {
     });
   }
 
-  int selectedCategoryId = 0;
+  int selectedExpenseId = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _AddExpenseState extends State<AddExpense> {
               Container(
                   margin: EdgeInsets.only(bottom: 12.0),
                   child: Text(
-                    "Pick Category",
+                    "Pick Expense",
                     style: Theme.of(context).textTheme.title,
                   )),
               Container(
@@ -57,8 +57,8 @@ class _AddExpenseState extends State<AddExpense> {
                   color: Colors.white,
                 ),
                 child: StreamBuilder(
-                  stream: categoryBloc.categoryListStream,
-                  builder: (_, AsyncSnapshot<BuiltList<CategoryModel>> snap) {
+                  stream: expenseBloc.expenseListStream,
+                  builder: (_, AsyncSnapshot<BuiltList<ExpenseModel>> snap) {
                     if (!snap.hasData)
                       return Center(
                         child: CircularProgressIndicator(),
@@ -66,18 +66,18 @@ class _AddExpenseState extends State<AddExpense> {
 
                     return Wrap(
                         children: List.generate(snap.data.length, (int index) {
-                          var categoryModel = snap.data[index];
+                          var expenseModel = snap.data[index];
                           return Container(
                             margin: EdgeInsets.symmetric(
                               horizontal: 2.0,
                             ),
                             child: ChoiceChip(
                               selectedColor: Theme.of(context).accentColor,
-                              selected: categoryModel.id == selectedCategoryId,
-                              label: Text(categoryModel.title),
+                              selected: expenseModel.id == selectedExpenseId,
+                              label: Text(expenseModel.title),
                               onSelected: (selected) {
                                 setState(() {
-                                  selectedCategoryId = categoryModel.id;
+                                  selectedExpenseId = expenseModel.id;
                                 });
                               },
                             ),
