@@ -1,6 +1,7 @@
 library my_prj.globals;
 import 'Classes/CashFlow.dart';
 import 'Classes/CatClass.dart';
+import 'insults/insults.dart';
 import 'package:flutter/material.dart';
 
 CashFlow totalCash = new CashFlow(
@@ -14,3 +15,5 @@ CashFlow totalCash = new CashFlow(
 );
 
 CatClass catPie = new CatClass();
+
+Insults insultobj = new Insults();
