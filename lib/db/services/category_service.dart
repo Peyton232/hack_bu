@@ -1,6 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'file:///C:/Users/noble/AndroidStudioProjects/hackBU/hack_bu/lib/db/offline_db_provider.dart';
+import '../offline_db_provider.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/models/serializers.dart';
 import 'package:flutter/material.dart';
