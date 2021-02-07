@@ -6,15 +6,14 @@ import 'package:expense_manager/blocks/category_block.dart';
 import 'package:expense_manager/db/services/category_service.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:expense_manager/routes/addCategory.dart';
-import 'package:flutter/material.dart';
 import '../models/category_model.dart';
-import 'package:expense_manager/Data/constants.dart';
 import 'package:flutter/cupertino.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
   _CategoryPageState createState() => _CategoryPageState();
 }
+
 
 class _CategoryPageState extends State<CategoryPage> {
   CategoryBlock _categoryBlock;
@@ -25,6 +24,7 @@ class _CategoryPageState extends State<CategoryPage> {
     _categoryBlock = CategoryBlock(CategoryService());
   }
 
+
   @override
   Widget build(BuildContext context) {
     return _getCategoryTab();
@@ -34,29 +34,30 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget _getCategoryTab() {
     return new Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
+          onPressed: (){
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => AddCategory(
-                        categoryBloc: _categoryBlock,
-                      )),
+              MaterialPageRoute(builder: (context) => AddCategory(categoryBloc: _categoryBlock,)
+              ),
             );
           },
-          child: Icon(Icons.add)),
+          child: Icon(Icons.add)
+      ),
       body: new Column(
         children: <Widget>[
-          // CustomAppBar(
-          //   appBarLabel: 'Categories',
-          // ),
+          CustomAppBar(
+            appBarLabel: 'Categories',
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 20.0,
               ),
               child: Row(
-                children: <Widget>[],
+                children: <Widget>[
+                ],
               ),
             ),
             height: 0,
@@ -104,8 +105,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         trailing: IconButton(
                           icon: Icon(Icons.delete),
                           color: Theme.of(context).primaryColorLight,
-                          onPressed: () =>
-                              _categoryBlock.deleteCategory(category.id),
+                          onPressed: () => _categoryBlock.deleteCategory(category.id),
                         ),
                         title: Text(
                           category.title,
@@ -114,11 +114,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               .body2
                               .copyWith(color: Theme.of(context).accentColor),
                         ),
-                        subtitle: category.desc == null
-                            ? SizedBox()
-                            : Text(
-                                category.desc,
-                              ),
+                        subtitle: category.desc == null ? SizedBox() : Text(
+                          category.desc,
+                        ),
                       ),
                     );
                   },
