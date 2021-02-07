@@ -1,6 +1,7 @@
 import 'package:expense_manager/blocks/category_block.dart';
 import 'package:expense_manager/models/category_model.dart';
 import 'package:flutter/material.dart';
+import '../globals.dart' as globals;
 
 class AddCategory extends StatefulWidget {
   final CategoryBlock categoryBloc;
