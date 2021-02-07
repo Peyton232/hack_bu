@@ -4,6 +4,8 @@ import 'package:expense_manager/db/services/expense_service.dart';
 import 'package:expense_manager/models/expense_model.dart';
 import 'package:flutter/material.dart';
 import '../insults/Insults.dart';
+import 'package:flutter/cupertino.dart';
+
 import '../globals.dart' as globals;
 
 class AddExpense extends StatefulWidget {
@@ -16,6 +18,7 @@ class _AddExpenseState extends State<AddExpense> {
   FocusNode _focus = new FocusNode();
   bool _showKeyboard = false;
   TextEditingController _amountTextController = TextEditingController();
+  bool expense = true;
 
   @override
   void initState() {
@@ -101,7 +104,16 @@ class _AddExpenseState extends State<AddExpense> {
                                   labelText: "Amount",
                                 ),
                                 maxLines: 1,
-                                onChanged: (String text) {}),
+                                onChanged: (String text) {},
+                                onSubmitted: (String text){
+                                  if (expense){
+                                    globals.totalCash.subAmount(double.parse(text));
+                                  } else {
+                                    globals.totalCash.addAmount(double.parse(text));
+                                  }
+                                  _showMaterialDialog();
+                                },
+                           ),
                           )),
                       _showKeyboard ? _shortcutKeyboard() : SizedBox()
                     ],
@@ -138,6 +150,9 @@ class _AddExpenseState extends State<AddExpense> {
                   border: Border.all(color: Theme.of(context).accentColor)),
               child: FlatButton(
                 onPressed: () {
+                            _showMaterialDialog();
+                            setState(() {
+                            });
                   setState(() {
                     _amountTextController.value =
                         _amountTextController.value.copyWith(
@@ -145,13 +160,9 @@ class _AddExpenseState extends State<AddExpense> {
                           selection: TextSelection.collapsed(offset: key.length),
                         );
                   });
-                  if (expense){
-                    globals.totalCash.subAmount(double.parse(key));
-                  } else {
-                    globals.totalCash.addAmount(double.parse(key));
-                  }
 
                 },
+
                 child: Text(key),
                 //child: globals.totalCash.addAmount(double.parse(key));
               ),
@@ -160,5 +171,23 @@ class _AddExpenseState extends State<AddExpense> {
           },
         ));
   }
-}
 
+  _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+          title: new Text("Insult"),
+          content: new Text(
+              globals.insultobj.getInsult
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Close me!'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        ));
+  }
+}
