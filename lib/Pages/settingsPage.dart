@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'languages_screen.dart';
@@ -10,6 +11,32 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool lockInBackground = true;
   bool notificationsEnabled = true;
+  bool clearData = false;
+
+
+// user defined function
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Alert Dialog title"),
+          content: new Text("Alert Dialog body"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +82,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 switchValue: true,
                 onToggle: (value) {},
               ),
-              /*SettingsTile.switchTile(
+              SettingsTile.switchTile(
                 title: 'Clear Data',
                 leading: Icon(Icons.delete),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  color: Theme.of(context).primaryColorLight,
-                  //onPressed: () => delete_all_data,
+                switchValue: clearData,
+                onToggle: (bool value) {
+                  _showDialog();
+                  setState(() {
+                    clearData = value;
+                  });
+                },
                 ),
-              ),*/
             ],
           ),
           SettingsSection(
