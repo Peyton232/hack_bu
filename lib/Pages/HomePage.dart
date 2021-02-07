@@ -15,10 +15,16 @@ import 'package:expense_manager/Data/constants.dart';
 //import 'package:expense_manager/routes/add_expense.dart';
 import 'package:flutter/cupertino.dart';
 import '../routes/add_expense.dart';
+import '../Classes/CashFlow.dart';
+
+import '../globals.dart' as globals;
+
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -34,7 +40,8 @@ class HomePage extends StatelessWidget {
                 //color: kGrayColor, //debugging purposes
                 child: Center(
                   child: Text(
-                    '\$4,567.89',
+                    //'\$4,567.89',
+                    "\$" + globals.totalCash.amount.toString(),
                     style: kHomeMoneyTextStyle,
                   ),
                 ),
@@ -42,7 +49,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Spent:',
-              amount: 123.45,
+              amount: globals.totalCash.expense.toString(),
               style: kHomeMoneySpentTextStyle,
               addSubtract: '-',
             ),
@@ -51,7 +58,7 @@ class HomePage extends StatelessWidget {
             ),
             HomeMoneyCard(
               cardName: 'Money Gained: ',
-              amount: 256.64,
+              amount: globals.totalCash.income.toString(),
               style: kHomeMoneyGainedTextStyle,
               addSubtract: '+',
             ),

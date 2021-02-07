@@ -3,7 +3,7 @@ import 'package:expense_manager/Data/constants.dart';
 
 class HomeMoneyCard extends StatelessWidget {
   final String cardName;
-  final double amount;
+  final String amount;
   final TextStyle style;
   final String addSubtract;
 

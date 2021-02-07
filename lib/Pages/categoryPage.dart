@@ -30,6 +30,7 @@ class _CategoryPageState extends State<CategoryPage> {
     return _getCategoryTab();
   }
 
+
   Widget _getCategoryTab() {
     return new Scaffold(
       floatingActionButton: FloatingActionButton(
